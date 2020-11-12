@@ -1,0 +1,19 @@
+{
+  "name": "amva-app-api",
+  "version": "0.1.0",
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node ./src/index.js"
+  },
+  "contributors": [
+    {
+      "name": "Daniel Solarte",
+      "email": "danielsolartech@hotmail.com"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "osc": "^2.4.1"
+  }
+}

@@ -19,7 +19,7 @@
     cursor: pointer;
 }
 
-.avistamiento:hover > .information {
+.avistamiento:hover > .information, .avistamiento > .information:hover {
     display: block;
 }
 
