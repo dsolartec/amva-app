@@ -1,0 +1,41 @@
+name: Node.JS CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: ${{ matrix.os }} with Node.JS v${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+        version:
+          - 12.x
+          - 14.x
+
+    steps:
+      - name: Install Node.JS v${{ matrix.version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.version }}
+
+      - uses: actions/checkout@v2
+
+      - name: Log versions
+        run: |
+          node -v
+          npm -v
+      - name: Install dependencies
+        run: npm install
+
+      - name: Building web
+        run: |
+          cd web
+          npm run build
+
+      - name: Testing
+        run: npm run test
