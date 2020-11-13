@@ -9,7 +9,7 @@ import "moment/locale/es";
 import avistamientos from "./avistamientos.json";
 import "./App.css";
 
-function App() {
+function App({ socket }) {
   const [mapElement, setMapElement] = useState(null);
   // eslint-disable-next-line
   const [overlays, _setOverlays] = useState([]);
@@ -68,6 +68,9 @@ function App() {
                 (data.usuario && data.usuario.length) ? ` por ${data.usuario}` : ''
               }
             </div>
+            <button onClick={() => {
+              socket.emit("coords", data.latitud, data.longitud);
+            }}>Escuchar</button>
           </div>
         </div>;
       })}
