@@ -11,6 +11,7 @@ import "./App.css";
 
 function App() {
   const [mapElement, setMapElement] = useState(null);
+  // eslint-disable-next-line
   const [overlays, _setOverlays] = useState([]);
   const [map, setMap] = useState(null);
 
