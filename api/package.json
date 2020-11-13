@@ -2,7 +2,10 @@
   "name": "amva-app-api",
   "version": "0.1.0",
   "main": "./src/index.js",
+  "type": "module",
   "scripts": {
+    "dev": "nodemon",
+    "precommit": "",
     "start": "node ./src/index.js"
   },
   "contributors": [
@@ -13,7 +16,13 @@
   ],
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
-    "osc": "^2.4.1"
+    "osc": "^2.4.1",
+    "socket.io": "^3.0.1"
+  },
+  "devDependencies": {
+    "husky": "^4.3.0",
+    "nodemon": "^2.0.6"
   }
 }
