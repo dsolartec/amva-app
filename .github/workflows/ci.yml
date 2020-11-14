@@ -33,10 +33,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Building web
-        run: |
-          cd web
-          npm run build
-
-      - name: Testing
-        run: npm run test
+      - name: Execute precommit command
+        run: npm run precommit
