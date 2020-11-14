@@ -5,6 +5,6 @@
     "watch": [
         "./src/"
     ],
-    "ext": "js",
-    "exec": "npm run start"
+    "ext": "ts",
+    "exec": "npm run build && npm run start:dev"
 }
