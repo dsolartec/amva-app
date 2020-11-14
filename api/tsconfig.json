@@ -11,6 +11,7 @@
             "@Data/*": ["data/*"],
             "@Interfaces/*": ["interfaces/*"],
             "@Server/*": ["server/*"],
+            "@Utils/*": ["utils/*"]
         }
     },
     "exclude": [

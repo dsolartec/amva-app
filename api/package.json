@@ -20,7 +20,8 @@
   "_moduleAliases": {
     "@Data": "./build/data/",
     "@Interfaces": "./build/interfaces/",
-    "@Server": "./build/server/"
+    "@Server": "./build/server/",
+    "@Utils": "./build/utils/"
   },
   "dependencies": {
     "axios": "^0.21.0",

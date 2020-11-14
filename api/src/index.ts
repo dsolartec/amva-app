@@ -1,4 +1,5 @@
 import "module-alias/register";
+import getEnvironmentalNoiseStatusBySchedule from "@Data/getEnvironmentalNoiseStatusBySchedule";
 import getLevelStations from "@Data/getLevelStations";
 import createServer from "@Server/createServer";
 
@@ -8,10 +9,10 @@ async function initializeAPI() {
         dotenv.config();
     }
 
+    const environmentalNoiseStatusBySchedule = await getEnvironmentalNoiseStatusBySchedule();
     const levelStationsData = await getLevelStations();
 
     const { app, http } = createServer();
-
 }
 
 initializeAPI().catch(console.log);
