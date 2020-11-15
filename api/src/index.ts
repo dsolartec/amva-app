@@ -1,6 +1,7 @@
 import "module-alias/register";
 import { getEnvironmentalNoiseStatusBySchedule, getEnvironmentalNoiseStatusByDay } from "@Data/getEnvironmentalNoiseStatus";
 import getLevelStations from "@Data/getLevelStations";
+import getUVRadiationStations from "@Data/getUVRadiationStations";
 import createServer from "@Server/createServer";
 
 async function initializeAPI() {
@@ -11,7 +12,8 @@ async function initializeAPI() {
 
     const environmentalNoiseStatusBySchedule = await getEnvironmentalNoiseStatusBySchedule();
     const environmentalNoiseStatusByDay = await getEnvironmentalNoiseStatusByDay();
-    const levelStationsData = await getLevelStations();
+    const levelStations = await getLevelStations();
+    const uvRadiationStations = await getUVRadiationStations();
 
     const { app, http } = createServer();
 }
