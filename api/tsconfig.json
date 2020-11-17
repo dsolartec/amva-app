@@ -10,14 +10,13 @@
         "paths": {
             "@Data/*": ["data/*"],
             "@Interfaces/*": ["interfaces/*"],
-            "@Server/*": ["server/*"],
-            "@Utils/*": ["utils/*"]
+            "@Server/*": ["server/*"]
         }
     },
     "exclude": [
         "./node_modules/"
     ],
     "include": [
-        "./src/",
-    ],
+        "./src/"
+    ]
 }

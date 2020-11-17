@@ -1,6 +1,6 @@
 import IRainStation from "@Interfaces/IRainStation";
-import getMomentDate from "@Utils/getMomentDate";
 import Axios from "axios";
+import * as Moment from "moment";
 
 async function getRainStation(): Promise<IRainStation[]> {
     const data: IRainStation[] = [];
@@ -24,7 +24,7 @@ async function getRainStation(): Promise<IRainStation[]> {
                 p1h: e.p1h,
                 p24h: e.p24h,
 
-                date: getMomentDate(e.fecha),
+                date: Moment(new Date(e.fecha)),
 
                 latitude: e.latitud,
                 length: e.longitud,

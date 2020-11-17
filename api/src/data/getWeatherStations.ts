@@ -1,6 +1,6 @@
 import IWeatherStation from "@Interfaces/IWeatherStation";
-import getMomentDate from "@Utils/getMomentDate";
 import Axios from "axios";
+import * as Moment from "moment";
 
 async function getWeatherStations(): Promise<IWeatherStation[]> {
     const data: IWeatherStation[] = [];
@@ -29,7 +29,7 @@ async function getWeatherStations(): Promise<IWeatherStation[]> {
                 t10m: e.t10m,
                 vv10m: e.vv10m,
 
-                date: getMomentDate(e.fecha),
+                date: Moment(new Date(e.fecha)),
 
                 latitude: e.latitud,
                 length: e.longitud,

@@ -1,6 +1,6 @@
 import Axios from "axios";
 import { IEnvironmentalNoiseStatusBySchedule, IEnvironmentalNoiseStatusByDay } from "@Interfaces/IEnvironmentalNoiseStatus";
-import getMomentDate from "@Utils/getMomentDate";
+import * as Moment from "moment";
 
 export async function getEnvironmentalNoiseStatusBySchedule(): Promise<IEnvironmentalNoiseStatusBySchedule[]> {
     const data: IEnvironmentalNoiseStatusBySchedule[] = [];
@@ -32,7 +32,7 @@ export async function getEnvironmentalNoiseStatusBySchedule(): Promise<IEnvironm
                 data_collected: e.datos ? e.datos.map((e: any) => ({
                     LRAeqH: e.LRAeqH,
                     LRAeqH_quality: Number(e.calidad_LRAeqH),
-                    date: getMomentDate(e.fecha),
+                    date: Moment(new Date(e.fecha)),
                 })) : [],
             });
         });
@@ -78,7 +78,7 @@ export async function getEnvironmentalNoiseStatusByDay(): Promise<IEnvironmental
                     LRAeqN: e.LRAeqN,
                     LRAeqN_quality: Number(e.calidad_LRAeqN),
 
-                    date: getMomentDate(e.fecha),
+                    date: Moment(new Date(e.fecha)),
                 })) : [],
             });
         });

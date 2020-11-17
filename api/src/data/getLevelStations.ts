@@ -1,6 +1,6 @@
 import Axios from "axios";
 import ILevelStation from "@Interfaces/ILevelStation";
-import getMomentDate from "@Utils/getMomentDate";
+import * as Moment from "moment";
 
 async function getLevelStation(): Promise<ILevelStation[]> {
     const data: ILevelStation[] = [];
@@ -35,7 +35,7 @@ async function getLevelStation(): Promise<ILevelStation[]> {
                     : [],
                 location: e.subCuenca,
 
-                lastUpdate: getMomentDate(e.ultimaActualizacion),
+                lastUpdate: Moment(new Date(e.ultimaActualizacion)),
             });
         });
     }

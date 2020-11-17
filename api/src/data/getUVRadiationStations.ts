@@ -1,6 +1,6 @@
 import IUVRadiationStation from "@Interfaces/IUVRadiationStation";
 import Axios from "axios";
-import getMomentDate from "@Utils/getMomentDate";
+import * as Moment from "moment";
 
 async function getUVRadiationStations(): Promise<IUVRadiationStation[]> {
     const data: IUVRadiationStation[] = [];
@@ -18,7 +18,7 @@ async function getUVRadiationStations(): Promise<IUVRadiationStation[]> {
 
                 ultraviolet_radiation: e.radiacionUV,
 
-                date: getMomentDate(e.fecha),
+                date: Moment(new Date(e.fecha)),
 
                 latitude: e.latitudEstacion,
                 length: e.longitudEstacion,
