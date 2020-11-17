@@ -1,11 +1,11 @@
-import IRainStation from "@Interfaces/IRainStation";
+import IWeatherStation from "@Interfaces/IWeatherStation";
 import getMomentDate from "@Utils/getMomentDate";
 import Axios from "axios";
 
-async function getRainStation(): Promise<IRainStation[]> {
-    const data: IRainStation[] = [];
+async function getWeatherStations(): Promise<IWeatherStation[]> {
+    const data: IWeatherStation[] = [];
 
-    const request = await Axios.get("http://siata.gov.co:8089/estacionesPluvio/cc77055bdd78258a6a92daa6e9de0fa0732a0a36/");
+    const request = await Axios.get("http://siata.gov.co:8089/estacionesMeteo/cc77055bdd78258a6a92daa6e9de0fa0732a0a36/");
 
     const request_data: any[] = request.data.datos || [];
 
@@ -20,9 +20,14 @@ async function getRainStation(): Promise<IRainStation[]> {
                 neighborhood: e.barrio,
                 basin: e.subcuenca,
 
+                dv10m: e.dv10m,
+                h10m: e.h10m,
                 p10m: e.p10m,
                 p1h: e.p1h,
                 p24h: e.p24h,
+                pr10m: e.pr10m,
+                t10m: e.t10m,
+                vv10m: e.vv10m,
 
                 date: getMomentDate(e.fecha),
 
@@ -35,4 +40,4 @@ async function getRainStation(): Promise<IRainStation[]> {
     return data;
 }
 
-export default getRainStation;
+export default getWeatherStations;

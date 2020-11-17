@@ -4,6 +4,7 @@ import { getEnvironmentalNoiseStatusBySchedule, getEnvironmentalNoiseStatusByDay
 import getLevelStations from "@Data/getLevelStations";
 import getRainStations from "@Data/getRainStations";
 import getUVRadiationStations from "@Data/getUVRadiationStations";
+import getWeatherStations from "@Data/getWeatherStations";
 import createServer from "@Server/createServer";
 
 async function initializeAPI() {
@@ -18,7 +19,8 @@ async function initializeAPI() {
     const levelStations = await getLevelStations();
     const rainStations = await getRainStations();
     const uvRadiationStations = await getUVRadiationStations();
-    
+    const weaterStations = await getWeatherStations();
+
     const { app, http } = createServer();
 }
 

@@ -1,7 +1,7 @@
 import ICoord from "./ICoord";
 import { Moment } from "moment";
 
-interface IRainStation extends ICoord {
+interface IWeatherStation extends ICoord {
     name: string;
     code: number;
 
@@ -10,11 +10,16 @@ interface IRainStation extends ICoord {
     neighborhood: string;
     basin: string;
 
+    dv10m: number;
+    h10m: number;
     p10m: number;
     p1h: number;
     p24h: number;
+    pr10m: number;
+    t10m: number;
+    vv10m: number;
 
     date: Moment;
 }
 
-export default IRainStation;
+export default IWeatherStation;
