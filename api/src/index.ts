@@ -1,8 +1,9 @@
 import "module-alias/register";
+import getAccelerographStations from "@Data/getAccelerographStations";
 import { getEnvironmentalNoiseStatusBySchedule, getEnvironmentalNoiseStatusByDay } from "@Data/getEnvironmentalNoiseStatus";
 import getLevelStations from "@Data/getLevelStations";
+import getRainStations from "@Data/getRainStations";
 import getUVRadiationStations from "@Data/getUVRadiationStations";
-import getAccelerographStations from "@Data/getAccelerographStations";
 import createServer from "@Server/createServer";
 
 async function initializeAPI() {
@@ -11,12 +12,13 @@ async function initializeAPI() {
         dotenv.config();
     }
 
+    const accelerographStations = await getAccelerographStations();
     const environmentalNoiseStatusBySchedule = await getEnvironmentalNoiseStatusBySchedule();
     const environmentalNoiseStatusByDay = await getEnvironmentalNoiseStatusByDay();
     const levelStations = await getLevelStations();
-    const accelerographStations = await getAccelerographStations();
+    const rainStations = await getRainStations();
     const uvRadiationStations = await getUVRadiationStations();
-
+    
     const { app, http } = createServer();
 }
 
