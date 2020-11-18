@@ -1,11 +1,13 @@
 #this script loads json files and generates sound events
 #coding=utf-8
+# to get the json file:
+# https://webservices.metropol.gov.co/SIMAPI/api/EnClicla/ObtenerPrestamos?FechaIni=20201117&FechaFin=20201118
 
 import json
 from datetime import datetime, date, time
 #import time
 
-with open('bikes20201111.json') as f:
+with open('bikes20201117.json') as f:
   data = json.load(f)
 
 def subtraction(listA, listB):
@@ -75,7 +77,7 @@ for event in data:
 
 		#print beginning[:2], lista_estaciones.index(event['descripcionPrestamo']), lista_estaciones.index(event['descripcionDevolucion']), diff
 
-fileout = open("dia.txt", "w")
+fileout = open("20201117.txt", "w")
 for key in out_dict:
 	print key, out_dict[key]
 	line=" ".join(str(x) for x in out_dict[key])
