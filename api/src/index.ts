@@ -1,5 +1,6 @@
 import "module-alias/register";
 import getAccelerographStations from "@Data/getAccelerographStations";
+import getBikeLoans from "@Data/getBikeLoans";
 import { getEnvironmentalNoiseStatusBySchedule, getEnvironmentalNoiseStatusByDay } from "@Data/getEnvironmentalNoiseStatus";
 import getLevelStations from "@Data/getLevelStations";
 import getRainStations from "@Data/getRainStations";
@@ -16,6 +17,7 @@ async function initializeAPI() {
     }
 
     const accelerographStations = await getAccelerographStations();
+    const bikeLoans = await getBikeLoans({ year: 2020, month: 11, day: 11 }, { year: 2020, month: 11, day: 12 });
     const environmentalNoiseStatusBySchedule = await getEnvironmentalNoiseStatusBySchedule();
     const environmentalNoiseStatusByDay = await getEnvironmentalNoiseStatusByDay();
     const levelStations = await getLevelStations();
