@@ -12,13 +12,13 @@ async function getWeatherRadar(): Promise<IWeatherRadar[]> {
     if (request_data.length) {
         request_data.forEach((e) => {
             data.push({
-                url: e.url,
+                image: e.url,
                 date: Moment(new Date(e.fecha)),
             });
         });
     }
 
-    return data;
+    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
 }
 
 export default getWeatherRadar;

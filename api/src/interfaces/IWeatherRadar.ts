@@ -1,7 +1,7 @@
 import { Moment } from "moment";
 
 interface IWeatherRadar {
-    url: string;
+    image: string;
     date: Moment;
 }
 
