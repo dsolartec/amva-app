@@ -40,7 +40,7 @@ async function getLevelStation(): Promise<ILevelStation[]> {
         });
     }
 
-    return data;
+    return data.sort((a, b) => a.lastUpdate.millisecond() - b.lastUpdate.millisecond());
 }
 
 export default getLevelStation;

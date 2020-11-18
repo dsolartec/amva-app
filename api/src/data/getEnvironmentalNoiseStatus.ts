@@ -33,7 +33,7 @@ export async function getEnvironmentalNoiseStatusBySchedule(): Promise<IEnvironm
                     LRAeqH: e.LRAeqH,
                     LRAeqH_quality: Number(e.calidad_LRAeqH),
                     date: Moment(new Date(e.fecha)),
-                })) : [],
+                })).sort((a: any, b: any) => a.date.millisecond() - b.date.millisecond()) : [],
             });
         });
     }
@@ -79,7 +79,7 @@ export async function getEnvironmentalNoiseStatusByDay(): Promise<IEnvironmental
                     LRAeqN_quality: Number(e.calidad_LRAeqN),
 
                     date: Moment(new Date(e.fecha)),
-                })) : [],
+                })).sort((a: any, b: any) => a.date.millisecond() - b.date.millisecond()) : [],
             });
         });
     }

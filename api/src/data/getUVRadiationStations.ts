@@ -26,7 +26,7 @@ async function getUVRadiationStations(): Promise<IUVRadiationStation[]> {
         });
     }
 
-    return data;
+    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
 }
 
 export default getUVRadiationStations;

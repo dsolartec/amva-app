@@ -37,7 +37,7 @@ async function getWeatherStations(): Promise<IWeatherStation[]> {
         });
     }
 
-    return data;
+    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
 }
 
 export default getWeatherStations;

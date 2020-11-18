@@ -32,7 +32,7 @@ async function getRainStation(): Promise<IRainStation[]> {
         });
     }
 
-    return data;
+    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
 }
 
 export default getRainStation;
