@@ -1,4 +1,5 @@
 import "module-alias/register";
+import createOSC from "@Server/createOSC";
 import getAccelerographStations from "@Data/getAccelerographStations";
 import getBikeLoans from "@Data/getBikeLoans";
 import { getEnvironmentalNoiseStatusBySchedule, getEnvironmentalNoiseStatusByDay } from "@Data/getEnvironmentalNoiseStatus";
@@ -17,7 +18,9 @@ async function initializeAPI() {
         dotenv.config();
     }
 
-    const accelerographStations = await getAccelerographStations();
+    createOSC();
+
+    /*const accelerographStations = await getAccelerographStations();
     const bikeLoans = await getBikeLoans({ year: 2020, month: 11, day: 11 }, { year: 2020, month: 11, day: 12 });
     const environmentalNoiseStatusBySchedule = await getEnvironmentalNoiseStatusBySchedule();
     const environmentalNoiseStatusByDay = await getEnvironmentalNoiseStatusByDay();
@@ -29,7 +32,7 @@ async function initializeAPI() {
     const weatherRadar = await getWeatherRadar();
     const weatherStations = await getWeatherStations();
 
-    const { app, http } = createServer();
+    const { app, http } = createServer();*/
 }
 
 initializeAPI().catch(console.log);
