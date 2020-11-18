@@ -1,0 +1,27 @@
+import { Moment } from "moment";
+
+interface ISimplifiedMunicipalityForecasts {
+    window_name: string;
+    window_code: number;
+
+    quality: string;
+
+    icon: string;
+
+    begin_date: Moment;
+    end_date: Moment;
+}
+
+interface ISimplifiedMunicipalityForecast {
+    name: string;
+    code: number;
+
+    min_measurement: string;
+    max_measurement: string;
+
+    last_update: Moment;
+
+    forecasts: ISimplifiedMunicipalityForecasts[];
+}
+
+export default ISimplifiedMunicipalityForecast;

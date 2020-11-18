@@ -5,6 +5,7 @@ import { getEnvironmentalNoiseStatusBySchedule, getEnvironmentalNoiseStatusByDay
 import getLevelStations from "@Data/getLevelStations";
 import getRainStations from "@Data/getRainStations";
 import getSightings from "@Data/getSightings";
+import getSimplifiedMunicipalitiesForecast from "@Data/getSimplifiedMunicipalitiesForecast";
 import getUVRadiationStations from "@Data/getUVRadiationStations";
 import getWeatherRadar from "@Data/getWeatherRadar";
 import getWeatherStations from "@Data/getWeatherStations";
@@ -23,6 +24,7 @@ async function initializeAPI() {
     const levelStations = await getLevelStations();
     const rainStations = await getRainStations();
     const sightings = await getSightings({ year: 2020, month: 1, day: 10 }, { year: 2020, month: 10, day: 20 });
+    const simplifiedMunicipalitiesForecast = await getSimplifiedMunicipalitiesForecast();
     const uvRadiationStations = await getUVRadiationStations();
     const weatherRadar = await getWeatherRadar();
     const weatherStations = await getWeatherStations();
