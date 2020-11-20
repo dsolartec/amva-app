@@ -1,18 +1,23 @@
 import IOSCMessage from "@Interfaces/osc/IOSCMessage";
 import IUDPPort from "@Interfaces/osc/IUDPPort";
-import { getBikeLoansToday, getBikeLoansYesterday, getBikeLoansLastWeek } from "./requests/getBikeLoans";
-import { getSightingsToday, getSightingsYesterday, getSightingsLastWeek } from "./requests/getSightings";
+import * as bike_loans from "./requests/getBikeLoans";
+import * as sightings from "./requests/getSightings";
+import * as uv_radiation from "./requests/getUVRadiation";
 import sendOSCError from "@Utils/sendOSCError";
+import ICache from "@Interfaces/ICache";
 
-async function onMessage(message: IOSCMessage, osc: IUDPPort): Promise<void> {
+function onMessage(message: IOSCMessage, osc: IUDPPort, cache: ICache): void {
     switch (message.address.toLowerCase()) {
-        case "/get/bike_loans/today": return await getBikeLoansToday(message, osc);
-        case "/get/bike_loans/yesterday": return await getBikeLoansYesterday(message, osc);
-        case "/get/bike_loans/last_week": return await getBikeLoansLastWeek(message, osc);
+        case "/bike_loans/yesterday": return bike_loans.getYesterday(message, osc);
+        case "/bike_loans/today": return bike_loans.getToday(message, osc);
+        case "/bike_loans/last_week": return bike_loans.getLastWeek(message, osc);
 
-        case "/get/sightings/today": return await getSightingsToday(message, osc);
-        case "/get/sightings/yesterday": return await getSightingsYesterday(message, osc);
-        case "/get/sightings/last_week": return await getSightingsLastWeek(message, osc);
+        case "/sightings/yesterday": return sightings.getYesterday(message, osc);
+        case "/sightings/today": return sightings.getToday(message, osc);
+        case "/sightings/last_week": return sightings.getLastWeek(message, osc);
+
+        case "/uv_radiation/yesterday": return uv_radiation.getYesterday(message, osc, cache);
+        case "/uv_radiation/today": return uv_radiation.getToday(message, osc, cache);
 
         default: return sendOSCError(`The path ${message.address} does not exist.`, osc);
     }

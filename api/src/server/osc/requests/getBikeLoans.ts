@@ -3,43 +3,30 @@ import IOSCMessage, { IOSCMessageData } from "@Interfaces/osc/IOSCMessage";
 import IUDPPort from "@Interfaces/osc/IUDPPort";
 import sendOSCError from "@Utils/sendOSCError";
 import IBikeLoan from "@Interfaces/IBikeLoan";
-import sleep from "@Utils/sleep";
 
-async function send_bike_loans(osc: IUDPPort, data: IBikeLoan[], frequency: number) {
+function send_bike_loans(osc: IUDPPort, data: IBikeLoan[], frequency: number): void {
     console.log(`OSC: Got ${data.length} bike loans.`);
 
     for (let i = 0; i <= ~~(data.length / 500); i++) {
-        const init = i * 500;
+        setTimeout(() => {
+            const init = i * 500;
 
-        const args: IOSCMessageData[] = [];
+            const args: IOSCMessageData[] = [];
 
-        data.slice(init, init + 500).forEach((e) => {
-            args.push({ type: "f", value: e.loan_data.latitude });
-            args.push({ type: "f", value: e.loan_data.length });
-            args.push({ type: "f", value: e.return_data.latitude });
-            args.push({ type: "f", value: e.return_data.length });
-        });
+            data.slice(init, init + 500).forEach((e) => {
+                args.push({ type: "f", value: e.loan_data.latitude });
+                args.push({ type: "f", value: e.loan_data.length });
+                args.push({ type: "f", value: e.return_data.latitude });
+                args.push({ type: "f", value: e.return_data.length });
+            });
 
-        osc.send({ address: "/bike_loans", args });
-        console.log("OSC: Sent 500 bike loans.");
-
-        await sleep(frequency);
+            osc.send({ address: "/bike_loans", args });
+            console.log("OSC: Sent 500 bike loans.");
+        }, i * frequency);
     }
 }
 
-export async function getBikeLoansToday(message: IOSCMessage, osc: IUDPPort): Promise<void> {
-    const [frequency] = message.args;
-
-    if (!frequency || frequency.type !== "i") {
-        sendOSCError("You need enter a frequency.", osc);
-        return;
-    }
-
-    console.log("OSC: Requested bike loans of today.");
-    await send_bike_loans(osc, await bike_loans.getBikeLoansToday(), frequency.value);
-}
-
-export async function getBikeLoansYesterday(message: IOSCMessage, osc: IUDPPort): Promise<void> {
+export function getYesterday(message: IOSCMessage, osc: IUDPPort): void {
     const [frequency] = message.args;
 
     if (!frequency || frequency.type !== "i") {
@@ -48,10 +35,26 @@ export async function getBikeLoansYesterday(message: IOSCMessage, osc: IUDPPort)
     }
 
     console.log("OSC: Requested bike loans of yesterday.");
-    await send_bike_loans(osc, await bike_loans.getBikeLoansYesterday(), frequency.value);
+    bike_loans.getBikeLoansYesterday()
+        .then((data) => send_bike_loans(osc, data, frequency.value))
+        .catch((error) => console.log(`OSC Error: Get bike loans of yesterday: ${error}`));
 }
 
-export async function getBikeLoansLastWeek(message: IOSCMessage, osc: IUDPPort): Promise<void> {
+export function getToday(message: IOSCMessage, osc: IUDPPort): void {
+    const [frequency] = message.args;
+
+    if (!frequency || frequency.type !== "i") {
+        sendOSCError("You need enter a frequency.", osc);
+        return;
+    }
+
+    console.log("OSC: Requested bike loans of today.");
+    bike_loans.getBikeLoansToday()
+        .then((data) => send_bike_loans(osc, data, frequency.value))
+        .catch((error) => console.log(`OSC Error: Get bike loans of today: ${error}`));
+}
+
+export function getLastWeek(message: IOSCMessage, osc: IUDPPort): void {
     const [frequency] = message.args;
 
     if (!frequency || frequency.type !== "i") {
@@ -60,5 +63,7 @@ export async function getBikeLoansLastWeek(message: IOSCMessage, osc: IUDPPort):
     }
 
     console.log("OSC: Requested bike loans of the last week.");
-    await send_bike_loans(osc, await bike_loans.getBikeLoansLastWeek(), frequency.value);
+    bike_loans.getBikeLoansLastWeek()
+        .then((data) => send_bike_loans(osc, data, frequency.value))
+        .catch((error) => console.log(`OSC Error: Get bike loans of the last week: ${error}`));
 }

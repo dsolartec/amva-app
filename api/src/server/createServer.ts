@@ -1,3 +1,4 @@
+import ICache from "@Interfaces/ICache";
 import IServer from "@Interfaces/IServer";
 import * as Express from "express";
 import { Server as HTTPServer, createServer as HTTPCreateServer } from "http";
@@ -5,8 +6,9 @@ import { Server as HTTPServer, createServer as HTTPCreateServer } from "http";
 // Routes
 import getBikeLoans from "./routes/getBikeLoans";
 import getSightings from "./routes/getSightings";
+import getUVRadiation from "./routes/getUVRadiation";
 
-function createServer(): IServer {
+function createServer(cache: ICache): IServer {
     const app: Express.Express = Express();
 
     app.use(Express.urlencoded({ extended: true }));
@@ -15,6 +17,7 @@ function createServer(): IServer {
     // Routes
     app.use("/bike_loans/", getBikeLoans());
     app.use("/sightings/", getSightings());
+    app.use("/uv_radiation/", getUVRadiation(cache));
 
     // Create HTTP Server.
     const http: HTTPServer = HTTPCreateServer(app);

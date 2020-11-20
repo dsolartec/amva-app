@@ -2,8 +2,9 @@ const osc = require("osc");
 import IUDPPort from "@Interfaces/osc/IUDPPort"
 import IOSCMessage from "@Interfaces/osc/IOSCMessage";
 import onMessage from "./osc/onMessage";
+import ICache from "@Interfaces/ICache";
 
-function createOSC(): IUDPPort {
+function createOSC(cache: ICache): IUDPPort {
     const oscServer = new osc.UDPPort({
         localAddress: process.env.OSC_SERVER_HOST || "127.0.0.1",
         localPort: Number(process.env.OSC_SERVER_PORT) || 57121,
@@ -13,7 +14,7 @@ function createOSC(): IUDPPort {
         metadata: true,
     }) as IUDPPort;
 
-    oscServer.on("message", (msg: IOSCMessage) => onMessage(msg, oscServer));
+    oscServer.on("message", (msg: IOSCMessage) => onMessage(msg, oscServer, cache));
 
     oscServer.open();
 
