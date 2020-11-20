@@ -27,6 +27,18 @@ async function send_bike_loans(osc: IUDPPort, data: IBikeLoan[], frequency: numb
     }
 }
 
+export async function getBikeLoansToday(message: IOSCMessage, osc: IUDPPort): Promise<void> {
+    const [frequency] = message.args;
+
+    if (!frequency || frequency.type !== "i") {
+        sendOSCError("You need enter a frequency.", osc);
+        return;
+    }
+
+    console.log("OSC: Requested bike loans of today.");
+    await send_bike_loans(osc, await bike_loans.getBikeLoansToday(), frequency.value);
+}
+
 export async function getBikeLoansLastDay(message: IOSCMessage, osc: IUDPPort): Promise<void> {
     const [frequency] = message.args;
 
@@ -37,4 +49,16 @@ export async function getBikeLoansLastDay(message: IOSCMessage, osc: IUDPPort): 
 
     console.log("OSC: Requested bike loans of the last day.");
     await send_bike_loans(osc, await bike_loans.getBikeLoansLastDay(), frequency.value);
+}
+
+export async function getBikeLoansLastWeek(message: IOSCMessage, osc: IUDPPort): Promise<void> {
+    const [frequency] = message.args;
+
+    if (!frequency || frequency.type !== "i") {
+        sendOSCError("You need enter a frequency.", osc);
+        return;
+    }
+
+    console.log("OSC: Requested bike loans of the last week.");
+    await send_bike_loans(osc, await bike_loans.getBikeLoansLastWeek(), frequency.value);
 }
