@@ -1,5 +1,4 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 interface IAccelerographStation extends ICoord {
     event_id: number;
@@ -15,7 +14,7 @@ interface IAccelerographStation extends ICoord {
 
     stations_length: number;
 
-    date: Moment;
+    date: string;
 }
 
 export default IAccelerographStation;

@@ -1,5 +1,4 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 interface IWeatherStation extends ICoord {
     name: string;
@@ -19,7 +18,7 @@ interface IWeatherStation extends ICoord {
     t10m: number;
     vv10m: number;
 
-    date: Moment;
+    date: string;
 }
 
 export default IWeatherStation;

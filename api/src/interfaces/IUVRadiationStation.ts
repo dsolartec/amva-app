@@ -1,5 +1,4 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 interface IUVRadiationStation extends ICoord {
     name: string;
@@ -8,7 +7,7 @@ interface IUVRadiationStation extends ICoord {
 
     ultraviolet_radiation: number;
 
-    date: Moment;
+    date: string;
 }
 
 export default IUVRadiationStation;

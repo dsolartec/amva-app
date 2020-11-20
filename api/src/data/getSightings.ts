@@ -1,6 +1,5 @@
 import ISighting from "@Interfaces/ISighting";
 import Axios from "axios";
-import * as Moment from "moment";
 
 interface SightingDate {
     year: number;
@@ -20,7 +19,7 @@ async function getSightings(begin: SightingDate, end: SightingDate): Promise<ISi
             data.push({
                 author: e.usuario,
                 image: e.urlImagen,
-                date: Moment(new Date(e.fechaPublicacion)),
+                date: e.fechaPublicacion,
 
                 latitude: e.latitud,
                 length: e.longitud,
@@ -28,7 +27,7 @@ async function getSightings(begin: SightingDate, end: SightingDate): Promise<ISi
         });
     }
 
-    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
+    return data;
 }
 
 export default getSightings;

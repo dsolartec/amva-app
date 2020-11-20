@@ -1,6 +1,5 @@
 import ISimplifiedMunicipalityForecast from "@Interfaces/ISimplifiedMunicipalityForecast";
 import Axios from "axios";
-import * as Moment from "moment";
 
 async function getSimplifiedMunicipalitiesForecast(): Promise<ISimplifiedMunicipalityForecast[]> {
     const data: ISimplifiedMunicipalityForecast[] = [];
@@ -18,7 +17,7 @@ async function getSimplifiedMunicipalitiesForecast(): Promise<ISimplifiedMunicip
                 min_measurement: e.medicion_min,
                 max_measurement: e.medicion_max,
 
-                last_update: Moment(new Date(e.ultimaActualizacion)),
+                last_update: e.ultimaActualizacion,
 
                 forecasts: e.pronosticos ? e.pronosticos.map((e: any) => ({
                     window_name: e.nombreVentana,
@@ -28,8 +27,8 @@ async function getSimplifiedMunicipalitiesForecast(): Promise<ISimplifiedMunicip
 
                     icon: e.urlIcono,
 
-                    begin_date: Moment(new Date(e.tiempoInicial)),
-                    end_date: Moment(new Date(e.tiempoFinal)),
+                    begin_date: e.tiempoInicial,
+                    end_date: e.tiempoFinal,
                 })) : [],
             });
         });

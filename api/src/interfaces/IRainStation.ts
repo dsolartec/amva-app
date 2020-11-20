@@ -1,5 +1,4 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 interface IRainStation extends ICoord {
     name: string;
@@ -14,7 +13,7 @@ interface IRainStation extends ICoord {
     p1h: number;
     p24h: number;
 
-    date: Moment;
+    date: string;
 }
 
 export default IRainStation;

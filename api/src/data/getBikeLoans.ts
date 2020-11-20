@@ -1,6 +1,5 @@
 import IBikeLoan from "@Interfaces/IBikeLoan";
 import Axios from "axios";
-import * as Moment from "moment";
 
 interface BikeLoanDate {
     year: number;
@@ -17,33 +16,17 @@ async function getBikeLoans(begin: BikeLoanDate, end: BikeLoanDate): Promise<IBi
 
     if (request_data.length) {
         request_data.forEach((e) => {
-            let loan_date = e.fechaPrestamo;
-
-            const [loan_date_date, loan_date_time, loan_date_part] = loan_date.split(" ");
-
-            const [loan_time_hour, loan_time_minutes, loan_time_seconds] = loan_date_time.split(":");
-
-            loan_date = `${loan_date_date.split("/").join("-")} ${Number(loan_time_hour) + (loan_date_part.toLowerCase() === "p.m." ? 12 : 0)}:${loan_time_minutes}:${loan_time_seconds}`
-
-            let return_date = e.fechaDevolucion;
-
-            const [return_date_date, return_date_time, return_date_part] = return_date.split(" ");
-
-            const [return_time_hour, return_time_minutes, return_time_seconds] = return_date_time.split(":");
-
-            return_date = `${return_date_date.split("/").join("-")} ${Number(return_time_hour) + (return_date_part.toLowerCase() === "p.m." ? 12 : 0)}:${return_time_minutes}:${return_time_seconds}`
-
             data.push({
                 loan_data: {
                     place: e.descripcionPrestamo,
-                    date: Moment(new Date(loan_date)),
+                    date: e.fechaPrestamo,
 
                     latitude: Number(e.latitudPrestamo.replace(",", ".")),
                     length: Number(e.longitudPrestamo.replace(",", ".")),
                 },
                 return_data: {
                     place: e.descripcionDevolucion,
-                    date: Moment(new Date(return_date)),
+                    date: e.fechaDevolucion,
 
                     latitude: Number(e.latitudDevolucion.replace(",", ".")),
                     length: Number(e.longitudDevolucion.replace(",", ".")),
@@ -52,7 +35,7 @@ async function getBikeLoans(begin: BikeLoanDate, end: BikeLoanDate): Promise<IBi
         });
     }
 
-    return data.sort((a, b) => a.loan_data.date.millisecond() - b.loan_data.date.millisecond());
+    return data;
 }
 
 export default getBikeLoans;

@@ -1,5 +1,4 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 interface ILevelStation {
     name: string;
@@ -14,7 +13,7 @@ interface ILevelStation {
     coords: ICoord[];
     location: string;
 
-    lastUpdate: Moment;
+    lastUpdate: string;
 }
 
 export default ILevelStation;

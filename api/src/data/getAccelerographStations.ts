@@ -1,6 +1,5 @@
 import IAccelerographStation from "@Interfaces/IAccelerographStation";
 import Axios from "axios";
-import * as Moment from "moment";
 
 async function getAccelerographStations(): Promise<IAccelerographStation[]> {
     const data: IAccelerographStation[] = [];
@@ -25,7 +24,7 @@ async function getAccelerographStations(): Promise<IAccelerographStation[]> {
 
                 stations_length: e.numero_estaciones,
 
-                date: Moment(new Date(e.fecha)),
+                date: e.fecha,
 
                 latitude: e.latitud,
                 length: e.longitud,
@@ -33,7 +32,7 @@ async function getAccelerographStations(): Promise<IAccelerographStation[]> {
         });
     }
 
-    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
+    return data;
 }
 
 export default getAccelerographStations;

@@ -1,10 +1,9 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 export interface IEnvironmentalNoiseStatusByScheduleData {
     LRAeqH: number;
     LRAeqH_quality: number;
-    date: Moment;
+    date: string;
 }
 
 export interface IEnvironmentalNoiseStatusByDayData {
@@ -17,7 +16,7 @@ export interface IEnvironmentalNoiseStatusByDayData {
     LRAeqN: number;
     LRAeqN_quality: number;
 
-    date: Moment;
+    date: string;
 }
 
 interface IEnvironmentalNoiseStatus<T> extends ICoord {

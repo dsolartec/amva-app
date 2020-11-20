@@ -1,9 +1,8 @@
 import ICoord from "./ICoord";
-import { Moment } from "moment";
 
 interface IBikeLoanData extends ICoord {
     place: string;
-    date: Moment;
+    date: string;
 }
 
 interface IBikeLoan {

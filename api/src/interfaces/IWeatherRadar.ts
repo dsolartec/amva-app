@@ -1,8 +1,6 @@
-import { Moment } from "moment";
-
 interface IWeatherRadar {
     image: string;
-    date: Moment;
+    date: string;
 }
 
 export default IWeatherRadar;

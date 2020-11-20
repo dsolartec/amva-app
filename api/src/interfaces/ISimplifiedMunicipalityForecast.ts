@@ -1,5 +1,3 @@
-import { Moment } from "moment";
-
 interface ISimplifiedMunicipalityForecasts {
     window_name: string;
     window_code: number;
@@ -8,8 +6,8 @@ interface ISimplifiedMunicipalityForecasts {
 
     icon: string;
 
-    begin_date: Moment;
-    end_date: Moment;
+    begin_date: string;
+    end_date: string;
 }
 
 interface ISimplifiedMunicipalityForecast {
@@ -19,7 +17,7 @@ interface ISimplifiedMunicipalityForecast {
     min_measurement: string;
     max_measurement: string;
 
-    last_update: Moment;
+    last_update: string;
 
     forecasts: ISimplifiedMunicipalityForecasts[];
 }

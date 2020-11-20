@@ -19,6 +19,7 @@ async function initializeAPI() {
     }
 
     createOSC();
+    createServer();
 
     /*const accelerographStations = await getAccelerographStations();
     const bikeLoans = await getBikeLoans({ year: 2020, month: 11, day: 11 }, { year: 2020, month: 11, day: 12 });
@@ -30,9 +31,7 @@ async function initializeAPI() {
     const simplifiedMunicipalitiesForecast = await getSimplifiedMunicipalitiesForecast();
     const uvRadiationStations = await getUVRadiationStations();
     const weatherRadar = await getWeatherRadar();
-    const weatherStations = await getWeatherStations();
-
-    const { app, http } = createServer();*/
+    const weatherStations = await getWeatherStations();*/
 }
 
 initializeAPI().catch(console.log);

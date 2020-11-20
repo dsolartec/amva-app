@@ -1,5 +1,5 @@
 b = NetAddr("127.0.0.1", 57121);
-b.sendMsg("/get/bike_loans", 10, 11, 2020, 11, 11, 2020);
+b.sendMsg("/get/bike_loans/last_day", 120000);
 
 (
 ~listener = {|msg|

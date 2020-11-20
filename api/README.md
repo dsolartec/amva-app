@@ -1,22 +1,69 @@
 # A.M.V.A. App API
 
-## Server endpoints
+## OSC Endpoints
 
-### /get/bike_loans
-- Begin Day: `number`
-- Begin Month: `number`
-- Begin Year: `number`
-- End Day: `number`
-- End Month: `number`
-- End Year: `number`
+`/get/bike_loans/last_day`: Get the bike loans of the last day of the request.
 
-Example: `b.sendMsg("/get/bike_loans", 10, 11, 2020, 11, 11, 2020);`
+Data returned example (`/bike_loans` address):
+```js
+[
+    // Address
+    "/bike_loans",
 
-## Client endpoints
+    // First bike
+    6.253003, // Loan latitude
+    -75.582687, // Loan length
+    6.231326, // Return latitude
+    -75.591538, // Return length
 
-### /bike_loans
-Send 500 bike loans each second to the end of the request.
+    // Second bike
+    6.253003, // Loan latitude
+    -75.582687, // Loan length
+    6.255589, // Return latitude
+    -75.579259 // Return length
+]
+```
 
-For example, if the size of the bike loans is 2000, the response will split them in groups of 500 bike loans and then will send it each second.
+Request arguments (SuperCollider Example):
+```sclang
+b.sendMsg("/get/bike_loans/last_day", 120000);
+```
 
-Each bike loan has the following data: `loan_latitude`, `loan_length`, `return_latitude` and `return_length`.
+> NOTE: The argument is the frequency of the returned data: If the bike loans size is higher than 500 entries it will be split by 500 entries and they will be send with an interval (frequency), in this case of `120.000ms` (2 minutes).
+
+---
+`/error`: If the API returns an error it will catch here.
+
+Data returned example:
+```js
+[
+    // Address
+    "/error",
+    // Message
+    "This is an error"
+]
+```
+
+## Rest API Endpoints
+
+`/bike_loans/last_day`: Get the bike loans of the last day of the request.
+
+Data returned example:
+```json
+[
+    {
+        "loan_data": {
+            "place": "Suramericana",
+            "date": "19/11/2020 4:57:52 a.m.",
+            "latitude": 6.253003,
+            "length": -75.582687
+        },
+        "return_data": {
+            "place": "Rosales",
+            "date": "19/11/2020 5:33:26 a.m.",
+            "latitude": 6.231326,
+            "length": -75.591538
+        }
+    }
+]
+```

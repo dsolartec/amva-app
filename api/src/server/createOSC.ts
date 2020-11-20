@@ -17,6 +17,8 @@ function createOSC(): IUDPPort {
 
     oscServer.open();
 
+    console.log(`OSC is listening to ${oscServer.options.localAddress}:${oscServer.options.localPort} and sending data to ${oscServer.options.remoteAddress}:${oscServer.options.remotePort}`);
+
     return oscServer as IUDPPort;
 }
 

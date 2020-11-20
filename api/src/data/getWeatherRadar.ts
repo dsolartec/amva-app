@@ -1,6 +1,5 @@
 import IWeatherRadar from "@Interfaces/IWeatherRadar";
 import Axios from "axios";
-import * as Moment from "moment";
 
 async function getWeatherRadar(): Promise<IWeatherRadar[]> {
     const data: IWeatherRadar[] = [];
@@ -13,12 +12,12 @@ async function getWeatherRadar(): Promise<IWeatherRadar[]> {
         request_data.forEach((e) => {
             data.push({
                 image: e.url,
-                date: Moment(new Date(e.fecha)),
+                date: e.fecha,
             });
         });
     }
 
-    return data.sort((a, b) => a.date.millisecond() - b.date.millisecond());
+    return data;
 }
 
 export default getWeatherRadar;
