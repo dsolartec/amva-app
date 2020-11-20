@@ -2,6 +2,7 @@
   "name": "amva-app",
   "version": "0.1.0",
   "scripts": {
+    "build": "cd api && npm run build && cd ../web && npm run build",
     "dev": "concurrently \"cd api && npm run dev\" \"cd web && npm start\"",
     "precommit": "cd api && npm run precommit && cd ../web && npm run precommit",
     "postinstall": "cd api && npm install && cd ../web && npm install",
