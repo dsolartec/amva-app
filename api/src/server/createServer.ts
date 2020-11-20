@@ -4,6 +4,7 @@ import { Server as HTTPServer, createServer as HTTPCreateServer } from "http";
 
 // Routes
 import getBikeLoans from "./routes/getBikeLoans";
+import getSightings from "./routes/getSightings";
 
 function createServer(): IServer {
     const app: Express.Express = Express();
@@ -13,6 +14,7 @@ function createServer(): IServer {
 
     // Routes
     app.use("/bike_loans/", getBikeLoans());
+    app.use("/sightings/", getSightings());
 
     // Create HTTP Server.
     const http: HTTPServer = HTTPCreateServer(app);

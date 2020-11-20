@@ -8,8 +8,8 @@ function getBikeLoans(): Router {
         res.status(200).jsonp(await bike_loans.getBikeLoansToday());
     });
 
-    router.get("/last_day", async (req, res) => {
-        res.status(200).jsonp(await bike_loans.getBikeLoansLastDay());
+    router.get("/yesterday", async (req, res) => {
+        res.status(200).jsonp(await bike_loans.getBikeLoansYesterday());
     });
 
     router.get("/last_week", async (req, res) => {

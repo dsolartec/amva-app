@@ -39,7 +39,7 @@ export async function getBikeLoansToday(message: IOSCMessage, osc: IUDPPort): Pr
     await send_bike_loans(osc, await bike_loans.getBikeLoansToday(), frequency.value);
 }
 
-export async function getBikeLoansLastDay(message: IOSCMessage, osc: IUDPPort): Promise<void> {
+export async function getBikeLoansYesterday(message: IOSCMessage, osc: IUDPPort): Promise<void> {
     const [frequency] = message.args;
 
     if (!frequency || frequency.type !== "i") {
@@ -47,8 +47,8 @@ export async function getBikeLoansLastDay(message: IOSCMessage, osc: IUDPPort): 
         return;
     }
 
-    console.log("OSC: Requested bike loans of the last day.");
-    await send_bike_loans(osc, await bike_loans.getBikeLoansLastDay(), frequency.value);
+    console.log("OSC: Requested bike loans of yesterday.");
+    await send_bike_loans(osc, await bike_loans.getBikeLoansYesterday(), frequency.value);
 }
 
 export async function getBikeLoansLastWeek(message: IOSCMessage, osc: IUDPPort): Promise<void> {
