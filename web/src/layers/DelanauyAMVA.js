@@ -1,6 +1,6 @@
-import {GeoJsonLayer} from '@deck.gl/layers';
+import { GeoJsonLayer } from '@deck.gl/layers';
 
-import {default as data} from './delanauy_amva.geojson';
+import data from '../assets/delanauy_amva.geojson';
 
 const layer = new GeoJsonLayer({
     id: 'geojson-layer',
@@ -15,7 +15,7 @@ const layer = new GeoJsonLayer({
     getLineColor: d => [0, 255, 255, 255],
     getRadius: 100,
     getLineWidth: 1,
-    getElevation: d => +d.properties.ELEVACION*10
-  });
+    getElevation: d => d.properties.ELEVACION
+});
 
 export default layer;

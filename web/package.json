@@ -1,20 +1,13 @@
 {
   "name": "amva-app-web",
   "version": "0.1.0",
-  "contributors": [
-    {
-      "name": "Daniel Solarte",
-      "email": "danielsolartech@hotmail.com"
-    }
-  ],
-  "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "react-scripts build",
-    "deploy": "gh-pages -d build",
-    "precommit": "npm run build && npm run test",
-    "predeploy": "npm run build",
+    "eject": "react-scripts eject",
+    "precommit": "npm run build",
     "start": "react-scripts start",
-    "test": "react-scripts test --watchAll=false --passWithNoTests"
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": [
@@ -35,18 +28,21 @@
     ]
   },
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.1",
-    "@testing-library/user-event": "^12.2.0",
-    "moment": "^2.29.1",
-    "ol": "^6.4.3",
+    "@deck.gl/core": "^8.3.6",
+    "@deck.gl/geo-layers": "^8.3.6",
+    "@deck.gl/layers": "^8.3.6",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "deck.gl": "^8.3.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-map-gl": "^5.2.10",
     "react-scripts": "4.0.0",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "devDependencies": {
-    "gh-pages": "^3.1.0",
     "husky": "^4.3.0"
   }
 }

@@ -1,78 +1,102 @@
-import { useState, useEffect } from "react";
-import { Map, View } from "ol";
-import TileLayer from "ol/layer/Tile";
-import XYZ from "ol/source/XYZ";
-import { fromLonLat } from "ol/proj";
-import Overlay from "ol/Overlay";
-import moment from "moment";
-import "moment/locale/es";
-import avistamientos from "./avistamientos.json";
-import "./App.css";
+/// app.js
+import React from 'react';
+import DeckGL from '@deck.gl/react';
+import { StaticMap } from 'react-map-gl';
+import { TerrainLayer } from '@deck.gl/geo-layers';
+import { SolidPolygonLayer, PathLayer, PointCloudLayer } from '@deck.gl/layers';
 
-function App() {
-  const [mapElement, setMapElement] = useState(null);
-  // eslint-disable-next-line
-  const [overlays, _setOverlays] = useState([]);
-  const [map, setMap] = useState(null);
+import Countdown from './components/Countdown';
 
-  useEffect(() => {
-    if (mapElement && !map) {
-      const firstTarget = avistamientos[0];
+import LayerDelanauyAMVA from './layers/DelanauyAMVA'
 
-      setMap(new Map({
-        target: 'map',
-        layers: [
-          new TileLayer({
-            source: new XYZ({
-              url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            }),
-          }),
+// window.deck.log.disable()
+// window.deck.log.level = 2
+const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
+
+//Set your mapbox access token here
+const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVjaW5vc2RlbDgwIiwiYSI6ImNrM2VuOTl1MDAwMG8zZG50ZzY3b3RsaDQifQ.d4QqM-y9G-d8ixGbICsz0Q';
+
+// Viewport settings
+const INITIAL_VIEW_STATE = {
+  longitude: -75.552464,
+  latitude: 6.326047,
+  zoom: 11,
+  pitch: 60,
+  bearing: -60
+};
+
+const TERRAIN_IMAGE = `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.png?access_token=${MAPBOX_ACCESS_TOKEN}`;
+const SURFACE_IMAGE = `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.png?access_token=${MAPBOX_ACCESS_TOKEN}`;
+const ELEVATION_DECODER = {
+  rScaler: 6553.6,
+  gScaler: 25.6,
+  bScaler: 0.1,
+  offset: -10000
+};
+
+// USE PLAIN JSON OBJECTS
+const POLYGON_DATA = [
+    {
+        contour: [
+            [-75.552464, 6.326047],
+            [-75.552464, 6.426047],
+            [-75.652464, 6.426047],
+            [-75.652464, 6.326047],
+            [-75.552464, 6.326047]
         ],
-        view: new View({
-          center: fromLonLat([firstTarget.longitud, firstTarget.latitud]),
-          zoom: 12,
-        }),
-      }));
+        population: 46599
     }
-  }, [mapElement, map]);
+];
 
-  useEffect(() => {
-    if (overlays.length && map) {
-      overlays.forEach((overlay) => map.addOverlay(overlay));
-    }
-  }, [overlays, map]);
+function App({
+  texture = null, //SURFACE_IMAGE,
+  wireframe = true,
+  initialViewState = INITIAL_VIEW_STATE,
+  mapStyle = MAP_STYLE
+}) {
+    const layer1 = new SolidPolygonLayer({
+        /*
+        * Data format:
+        * [
+        *   {polygon: [[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]},   // Simple polygon (array of coords)
+        *   {polygon: [                                            // Complex polygon with one hole
+        *     [[0, 0], [0, 2], [2, 2], [2, 0], [0, 0]],            // (array of array of coords)
+        *     [[0, 0], [0, 1], [1, 1], [1, 0], [0, 0]]
+        *   ]}
+        * ]
+        */
+        data: POLYGON_DATA,
+        getPolygon: d => d.contour,
+        getElevation: d => 2000,
+        getFillColor: [0, 100, 60, 160],
+        extrude: true
+    });
 
-  moment.locale('es');
+    // https://deck.gl/docs/api-reference/geo-layers/terrain-layer
+    const layer = new TerrainLayer({
+        id: 'terrain',
+        minZoom: 11,
+        maxZoom: 11,
+        strategy: 'no-overlap',
+        elevationDecoder: ELEVATION_DECODER,
+        elevationData: TERRAIN_IMAGE,
+        texture,
+        wireframe,
+        color: [255, 0, 180]
+    });
 
-  return (
-    <div>
-      <div id="map" ref={setMapElement} />
-
-      {avistamientos.slice(0, 500).map((data, i) => {
-        overlays.push(new Overlay({
-          element: document.getElementById(`avistamiento_${i +1}`),
-          position: fromLonLat([data.longitud, data.latitud]),
-        }));
-
-        return <div
-          key={`avistamiento_${i + 1}`}
-          id={`avistamiento_${i + 1}`}
-          className="avistamiento"
-        >
-          <div className="information">
-            <div className="image" style={{
-              backgroundImage: `url('${data.urlImagen}')`,
-            }} />
-            <div className="text">
-              Visto el {moment(data.fechaPublicacion).format('dddd D [de] MMMM [de] YYYY [a las] h:mm:ss a')}{
-                (data.usuario && data.usuario.length) ? ` por ${data.usuario}` : ''
-              }
-            </div>
-          </div>
-        </div>;
-      })}
-    </div>
-  );
+    return (
+        <>
+            <DeckGL 
+                initialViewState={INITIAL_VIEW_STATE}
+                controller={true}
+                layers={[LayerDelanauyAMVA]} 
+            >
+                <StaticMap reuseMaps mapStyle={mapStyle} preventStyleDiffing={true} />
+            </DeckGL>
+            <Countdown />
+        </>
+    );
 }
 
 export default App;
