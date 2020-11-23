@@ -28,10 +28,10 @@ const INITIAL_VIEW_STATE = {
 const TERRAIN_IMAGE = `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}.png?access_token=${MAPBOX_ACCESS_TOKEN}`;
 const SURFACE_IMAGE = `https://api.mapbox.com/v4/mapbox.terrain-rgb/{z}/{x}/{y}@2x.png?access_token=${MAPBOX_ACCESS_TOKEN}`;
 const ELEVATION_DECODER = {
-  rScaler: 6553.6,
-  gScaler: 25.6,
-  bScaler: 0.1,
-  offset: -10000
+    rScaler: 6553.6,
+    gScaler: 25.6,
+    bScaler: 0.1,
+    offset: -10000
 };
 
 // USE PLAIN JSON OBJECTS
@@ -49,10 +49,10 @@ const POLYGON_DATA = [
 ];
 
 function App({
-  texture = null, //SURFACE_IMAGE,
-  wireframe = true,
-  initialViewState = INITIAL_VIEW_STATE,
-  mapStyle = MAP_STYLE
+    texture = null, //SURFACE_IMAGE,
+    wireframe = true,
+    initialViewState = INITIAL_VIEW_STATE,
+    mapStyle = MAP_STYLE
 }) {
     const layer1 = new SolidPolygonLayer({
         /*
@@ -90,7 +90,7 @@ function App({
             <DeckGL 
                 initialViewState={INITIAL_VIEW_STATE}
                 controller={true}
-                layers={[LayerDelanauyAMVA]} 
+                layers={[LayerDelanauyAMVA]}
             >
                 <StaticMap reuseMaps mapStyle={mapStyle} preventStyleDiffing={true} />
             </DeckGL>
