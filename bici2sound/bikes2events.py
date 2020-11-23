@@ -7,7 +7,7 @@ import json
 from datetime import datetime, date, time
 #import time
 
-with open('20201120.json') as f:
+with open('20201121.json') as f:
   data = json.load(f)
 
 def subtraction(listA, listB):
@@ -77,7 +77,7 @@ for event in data:
 
 		#print beginning[:2], lista_estaciones.index(event['descripcionPrestamo']), lista_estaciones.index(event['descripcionDevolucion']), diff
 
-fileout = open("20201120.txt", "w")
+fileout = open("20201121.txt", "w")
 for key in out_dict:
 	print key, out_dict[key]
 	line=" ".join(str(x) for x in out_dict[key])
