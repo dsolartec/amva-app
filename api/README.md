@@ -24,17 +24,17 @@ Data returned example (`/bike_loans` address):
     // Address
     "/bike_loans",
 
-    // First bike
-    6.253003, // Loan latitude
-    -75.582687, // Loan length
-    6.231326, // Return latitude
-    -75.591538, // Return length
+    // Loan latitude
+    6.253003,
 
-    // Second bike
-    6.253003, // Loan latitude
-    -75.582687, // Loan length
-    6.255589, // Return latitude
-    -75.579259 // Return length
+    // Loan length
+    -75.582687,
+
+    // Return latitude
+    6.231326,
+
+    // Return length
+    -75.591538,
 ]
 ```
 
@@ -44,8 +44,6 @@ b.sendMsg("/get/bike_loans/yesterday", 120000);
 b.sendMsg("/get/bike_loans/today", 120000);
 b.sendMsg("/get/bike_loans/last_week", 120000);
 ```
-
-> NOTE: The argument is the frequency of the returned data: If the bike loans size is higher than 500 entries it will be split by 500 entries and they will be send with an interval (frequency), in this case of `120.000ms` (2 minutes).
 
 ---
 `/sightings/yesterday`: Get the sightings of yesterday.
@@ -58,9 +56,11 @@ Data returned example (`/sightings` address):
     // Address
     "/sightings",
 
-    // First sighting
-    6.093497, // Latitude
-    -75.6438141, // Length
+    // Latitude
+    6.093497,
+
+    // Length
+    -75.6438141,
 ]
 ```
 
@@ -74,9 +74,13 @@ Data returned example (`/uv_radiation` address):
     // Address
     "/uv_radiation",
 
-    // First uv radiation
+    // Radiation
     0.0493,
+
+    // Latitude
     6.26004,
+
+    // Length
     -75.58949
 ]
 ```
