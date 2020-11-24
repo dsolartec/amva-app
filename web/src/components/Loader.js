@@ -17,7 +17,7 @@ export default function Loader({ isActive }) {
         >
             {props => <div style={props} className="loader">
                 <h2>Área Metropolitana del Valle de Aburrá</h2>
-                <span>Cargando el mapa en tres dimensiones...</span>
+                <span>Cargando mapa en 2.5D...</span>
             </div>}
         </Spring>
     );
