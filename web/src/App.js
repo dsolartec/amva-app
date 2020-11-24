@@ -1,78 +1,52 @@
-import { useState, useEffect } from "react";
-import { Map, View } from "ol";
-import TileLayer from "ol/layer/Tile";
-import XYZ from "ol/source/XYZ";
-import { fromLonLat } from "ol/proj";
-import Overlay from "ol/Overlay";
-import moment from "moment";
-import "moment/locale/es";
-import avistamientos from "./avistamientos.json";
-import "./App.css";
+import React from 'react';
+import Loader from './components/Loader';
+import DeckGL from '@deck.gl/react';
+import ReactMapGL from 'react-map-gl';
+import Countdown from './components/Countdown';
 
-function App() {
-  const [mapElement, setMapElement] = useState(null);
-  // eslint-disable-next-line
-  const [overlays, _setOverlays] = useState([]);
-  const [map, setMap] = useState(null);
+//import LayerDelanauyAMVA from './layers/DelanauyAMVA';
+//import LayerDEM from './layers/DEMLayer';
+//import LayerP2P from './layers/P2PLayer';
+import LayerCapsula from './layers/CapsulaLayer';
+import LayerMata from './layers/MataLayer';
 
-  useEffect(() => {
-    if (mapElement && !map) {
-      const firstTarget = avistamientos[0];
+// Viewport settings
+const INITIAL_VIEW_STATE = {
+    longitude: -75.552464,
+    latitude: 6.326047,
+    zoom: 11,
+    pitch: 60,
+    bearing: -60
+};
 
-      setMap(new Map({
-        target: 'map',
-        layers: [
-          new TileLayer({
-            source: new XYZ({
-              url: 'https://{a-c}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            }),
-          }),
-        ],
-        view: new View({
-          center: fromLonLat([firstTarget.longitud, firstTarget.latitud]),
-          zoom: 12,
-        }),
-      }));
-    }
-  }, [mapElement, map]);
+function App({
+    texture = null,
+    wireframe = true,
+    initialViewState = INITIAL_VIEW_STATE,
+    mapStyle = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
+}) {
+    const [mapLoaded, setMapLoaded] = React.useState(false);
 
-  useEffect(() => {
-    if (overlays.length && map) {
-      overlays.forEach((overlay) => map.addOverlay(overlay));
-    }
-  }, [overlays, map]);
-
-  moment.locale('es');
-
-  return (
-    <div>
-      <div id="map" ref={setMapElement} />
-
-      {avistamientos.slice(0, 500).map((data, i) => {
-        overlays.push(new Overlay({
-          element: document.getElementById(`avistamiento_${i +1}`),
-          position: fromLonLat([data.longitud, data.latitud]),
-        }));
-
-        return <div
-          key={`avistamiento_${i + 1}`}
-          id={`avistamiento_${i + 1}`}
-          className="avistamiento"
-        >
-          <div className="information">
-            <div className="image" style={{
-              backgroundImage: `url('${data.urlImagen}')`,
-            }} />
-            <div className="text">
-              Visto el {moment(data.fechaPublicacion).format('dddd D [de] MMMM [de] YYYY [a las] h:mm:ss a')}{
-                (data.usuario && data.usuario.length) ? ` por ${data.usuario}` : ''
-              }
+    return (
+        <>
+            <Loader isActive={!mapLoaded} />
+            <div style={{ opacity: mapLoaded ? 1 : 0 }}>
+                <DeckGL 
+                    initialViewState={initialViewState}
+                    controller={true}
+                    layers={[LayerCapsula, LayerMata]}
+                >
+                    <ReactMapGL
+                        reuseMaps
+                        mapStyle={mapStyle}
+                        preventStyleDiffing={true}
+                        onLoad={() => setMapLoaded(true)}
+                    />
+                </DeckGL>
             </div>
-          </div>
-        </div>;
-      })}
-    </div>
-  );
+            {mapLoaded && <Countdown />}
+        </>
+    );
 }
 
 export default App;

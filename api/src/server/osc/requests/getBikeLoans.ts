@@ -7,23 +7,19 @@ import IBikeLoan from "@Interfaces/IBikeLoan";
 function send_bike_loans(osc: IUDPPort, data: IBikeLoan[], frequency: number): void {
     console.log(`OSC: Got ${data.length} bike loans.`);
 
-    for (let i = 0; i <= ~~(data.length / 500); i++) {
+    data.forEach((e, i) => {
         setTimeout(() => {
-            const init = i * 500;
-
             const args: IOSCMessageData[] = [];
 
-            data.slice(init, init + 500).forEach((e) => {
-                args.push({ type: "f", value: e.loan_data.latitude });
-                args.push({ type: "f", value: e.loan_data.length });
-                args.push({ type: "f", value: e.return_data.latitude });
-                args.push({ type: "f", value: e.return_data.length });
-            });
+            args.push({ type: "f", value: e.loan_data.latitude });
+            args.push({ type: "f", value: e.loan_data.length });
+            args.push({ type: "f", value: e.return_data.latitude });
+            args.push({ type: "f", value: e.return_data.length });
 
             osc.send({ address: "/bike_loans", args });
-            console.log("OSC: Sent 500 bike loans.");
+            console.log("OSC: Sent 1 bike loan.");
         }, i * frequency);
-    }
+    });
 }
 
 export function getYesterday(message: IOSCMessage, osc: IUDPPort): void {

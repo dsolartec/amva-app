@@ -7,21 +7,17 @@ import ISighting from "@Interfaces/ISighting";
 function send_sightings(osc: IUDPPort, data: ISighting[], frequency: number) {
     console.log(`OSC: Got ${data.length} sightings.`);
 
-    for (let i = 0; i <= ~~(data.length / 500); i++) {
+    data.forEach((e, i) => {
         setTimeout(() => {
-            const init = i * 500;
-
             const args: IOSCMessageData[] = [];
 
-            data.slice(init, init + 500).forEach((e) => {
-                args.push({ type: "f", value: e.latitude });
-                args.push({ type: "f", value: e.length });
-            });
+            args.push({ type: "f", value: e.latitude });
+            args.push({ type: "f", value: e.length });
 
             osc.send({ address: "/sightings", args });
-            console.log("OSC: Sent 500 sightings.");
+            console.log("OSC: Sent 1 sighting.");
         }, i * frequency);
-    }
+    });
 }
 
 export function getYesterday(message: IOSCMessage, osc: IUDPPort): void {
