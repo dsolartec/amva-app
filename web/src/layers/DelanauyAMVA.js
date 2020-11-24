@@ -15,7 +15,7 @@ const layer = new GeoJsonLayer({
     getLineColor: d => [255, 255, 255, 255],
     getRadius: 100,
     getLineWidth: 5,
-    getElevation: d => 1400//+Math.log(d.properties.ELEV)*10
+    getElevation: d => 1400
 });
 
 export default layer;

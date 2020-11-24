@@ -19,10 +19,10 @@ const layer = new ScenegraphLayer({
     getPosition: d => d.coordinates,
     getOrientation: d => [0, Math.random() * 180, 90],
     _animations: {
-      '*': {speed: 5}
+        '*': { speed: 5 }
     },
     sizeScale: 1000,
     _lighting: 'pbr',
-  });
+});
 
-  export default layer;
+export default layer;
