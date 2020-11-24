@@ -6,6 +6,7 @@ import Countdown from './components/Countdown';
 
 //import LayerDelanauyAMVA from './layers/DelanauyAMVA';
 //import LayerDEM from './layers/DEMLayer';
+//import LayerP2P from './layers/P2PLayer';
 import LayerCapsula from './layers/CapsulaLayer';
 import LayerMata from './layers/MataLayer';
 
