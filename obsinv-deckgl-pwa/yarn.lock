@@ -1163,6 +1163,14 @@
     "@luma.gl/experimental" "^8.3.1"
     "@luma.gl/shadertools" "^8.3.1"
 
+"@deck.gl/mesh-layers@^8.3.8":
+  version "8.3.8"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mesh-layers/-/mesh-layers-8.3.8.tgz#2a92f2c892b0571510cb298ea9625ed0d1cf9b85"
+  integrity sha512-myxcGFm1GXlgDfrh3eiq8QmYittprp9h+4qHOF143C67W+Cy38klbSEWejZJs06eI7AwjFpM6qQwC3qZG0vY2g==
+  dependencies:
+    "@luma.gl/experimental" "^8.3.1"
+    "@luma.gl/shadertools" "^8.3.1"
+
 "@deck.gl/react@8.3.6":
   version "8.3.6"
   resolved "https://registry.yarnpkg.com/@deck.gl/react/-/react-8.3.6.tgz#0dcca71d5b3eb1a0aee41b4d393d00427eaa6e6e"
