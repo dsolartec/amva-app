@@ -10,10 +10,11 @@ import Countdown from './Countdown';
 import LayerDelanauyAMVA from './DelanauyAMVA';
 import LayerCapsula from './CapsulaLayer';
 import LayerDEM from './DEMLayer';
+import LayerP2P from './P2PLayer';
 
 // window.deck.log.disable()
 // window.deck.log.level = 2
-const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
+const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
 //Set your mapbox access token here
 const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVjaW5vc2RlbDgwIiwiYSI6ImNrM2VuOTl1MDAwMG8zZG50ZzY3b3RsaDQifQ.d4QqM-y9G-d8ixGbICsz0Q';
@@ -38,7 +39,7 @@ function App({
       <DeckGL 
         initialViewState={INITIAL_VIEW_STATE}
         controller={true}
-        layers={[/*LayerCapsula,*/ LayerDEM, LayerDelanauyAMVA]} 
+        layers={[/*LayerCapsula,*/ LayerDEM, LayerP2P /*, LayerDelanauyAMVA*/]} 
       >
         <ReactMapGL reuseMaps mapStyle={mapStyle} preventStyleDiffing={true} />
       </DeckGL> 
