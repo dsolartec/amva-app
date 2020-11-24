@@ -9,6 +9,7 @@ A.M.V.A are the initials of the Metropolitan Area of the Aburrá Valley ("Área 
 ## Contributors
 - **Alejo Duque** - Project Leader - [GitHub](https://github.com/alejoduque)
 - **Daniel Gómez** - Developer (Pure Data) - [GitHub](https://github.com/danielgomezmarin)
+- **Diego Molina** - Developer (SuperCollider) - [GitHub](https://github.com/diegomolinaquintero)
 - **Julián Giraldo** - Developer (Web) - [GitHub](https://github.com/brolin)
 - **Daniel Solarte** - Developer (API & Web) - [GitHub](https://github.com/danielsolartech)
 
