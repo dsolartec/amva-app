@@ -1,50 +1,50 @@
-/// app.js
 import React from 'react';
+import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
-// import {TerrainLayer} from '@deck.gl/geo-layers';
-// import {SolidPolygonLayer, PathLayer, PointCloudLayer} from '@deck.gl/layers';
-
 import Countdown from './components/Countdown';
 
 import LayerDelanauyAMVA from './layers/DelanauyAMVA';
-import LayerCapsula from './layers/CapsulaLayer';
 import LayerDEM from './layers/DEMLayer';
-
-// window.deck.log.disable()
-// window.deck.log.level = 2
-const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json';
-
-//Set your mapbox access token here
-const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoidmVjaW5vc2RlbDgwIiwiYSI6ImNrM2VuOTl1MDAwMG8zZG50ZzY3b3RsaDQifQ.d4QqM-y9G-d8ixGbICsz0Q';
+//import LayerCapsula from './layers/CapsulaLayer';
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
-  longitude: -75.552464,
-  latitude: 6.326047,
-  zoom: 11,
-  pitch: 60,
-  bearing: -60
+    longitude: -75.552464,
+    latitude: 6.326047,
+    zoom: 11,
+    pitch: 60,
+    bearing: -60
 };
 
 function App({
     texture = null,
     wireframe = true,
     initialViewState = INITIAL_VIEW_STATE,
-    mapStyle = MAP_STYLE
+    mapStyle = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 }) {
-  return (
-    <>
-        <DeckGL 
-            initialViewState={INITIAL_VIEW_STATE}
-            controller={true}
-            layers={[/*LayerCapsula,*/ LayerDEM, LayerDelanauyAMVA]} 
-        >
-            <ReactMapGL reuseMaps mapStyle={mapStyle} preventStyleDiffing={true} />
-        </DeckGL> 
-        <Countdown />
-    </>
-  );
+    const [mapLoaded, setMapLoaded] = React.useState(false);
+
+    return (
+        <>
+            <Loader isActive={!mapLoaded} />
+            <div style={{ opacity: mapLoaded ? 1 : 0 }}>
+                <DeckGL 
+                    initialViewState={initialViewState}
+                    controller={true}
+                    layers={[LayerDEM, LayerDelanauyAMVA]}
+                >
+                    <ReactMapGL
+                        reuseMaps
+                        mapStyle={mapStyle}
+                        preventStyleDiffing={true}
+                        onLoad={() => setMapLoaded(true)}
+                    />
+                </DeckGL>
+            </div>
+            {mapLoaded && <Countdown />}
+        </>
+    );
 }
 
 export default App;

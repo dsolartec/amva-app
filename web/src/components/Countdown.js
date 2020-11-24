@@ -1,12 +1,6 @@
-import React from 'react'
-import styled, { css, createGlobalStyle } from 'styled-components'
-
-/*
-   https://codesandbox.io/embed/r3f-game-i2160
-   https://dev.to/zhiyueyi/how-to-create-a-simple-react-countdown-timer-4mc3
-   https://www.digitalocean.com/community/tutorials/react-countdown-timer-react-hooks
-   https://github.com/do-community/react-hooks-timer/blob/master/src/App.js
- */
+import React from 'react';
+import { useSpring, animated } from 'react-spring';
+import './Countdown.scss';
 
 function calculateTimeLeft() {
     const difference = new Date(`2030-10-1`) - new Date();
@@ -32,6 +26,15 @@ export default function Countdown() {
     const minutes = React.useRef();
     const seconds = React.useRef();
 
+    const boxAnimation = useSpring({
+        left: '3rem',
+        opacity: 1,
+        from: {
+            left: '-24rem',
+            opacity: 0,
+        }
+    });
+
     React.useEffect(() => {
         if (years.current && days.current && hours.current && minutes.current && seconds.current && !timeCalled) {
             function setTime() {
@@ -53,93 +56,14 @@ export default function Countdown() {
     }, [timeCalled, years, days, hours, minutes, seconds]);
 
     return (
-        <>
-            <UpperLeft>
-                <span>Nos quedan</span>
-                <h2 ref={years}>0 años,</h2>
-                <h2 ref={days}>0 días,</h2>
-                <h2 ref={hours}>0 horas,</h2>
-                <h2 ref={minutes}>0 minutos y</h2>
-                <h2 ref={seconds}>0 segundos</h2>
-                <span>con agua potable...</span>
-            </UpperLeft>
-            <Global />
-        </>
-    )
+        <animated.div className="countdown" style={boxAnimation}>
+            <span>Nos quedan</span>
+            <h2 ref={years}>0 años,</h2>
+            <h2 ref={days}>0 días,</h2>
+            <h2 ref={hours}>0 horas,</h2>
+            <h2 ref={minutes}>0 minutos y</h2>
+            <h2 ref={seconds}>0 segundos</h2>
+            <span>con agua potable...</span>
+        </animated.div>
+    );
 }
-
-const base = css`
-    font-family: 'Teko', sans-serif;
-    position: absolute;
-    font-weight: 900;
-    font-variant-numeric: slashed-zero tabular-nums;
-    line-height: 1em;
-    pointer-events: none;
-    color: white;
-    text-shadow: 1px 1px 2px rgb(0,105,150);
-`
-
-const UpperLeft = styled.div`
-    ${base}
-    top: 2rem;
-    left: 3rem;
-    width: 21rem;
-    font-size: 2em;
-    pointer-events: all;
-    cursor: pointer;
-
-    @media only screen and (max-width: 900px) {
-        font-size: 1.5em;
-    }
-`
-
-const Global = createGlobalStyle`
-    * {
-        box-sizing: border-box;
-    }
-
-    html,
-    body,
-    #root {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-        user-select: none;
-        overflow: hidden;
-    }
-
-    #root {
-        overflow: auto;
-        padding: 0px;
-    }
-
-    body {
-        position: fixed;
-        overflow: hidden;
-        overscroll-behavior-y: none;
-        font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
-        color: black;
-        background: white;
-    }
-
-    h2 {
-        display: block;
-        font-size: 1.5em;
-        font-weight: bold;
-        margin: .35em 0;
-        margin-left: .2em;
-    }
-
-    span {
-        display: block;
-    }
-
-    span:nth-of-type(1) {
-        margin-bottom: 1.75rem;
-    }
-
-    span:nth-of-type(2) {
-        margin-top: 1.75rem;
-    }
-`

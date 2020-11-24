@@ -11,8 +11,8 @@ const layer = new GeoJsonLayer({
     extruded: true,
     lineWidthScale: 20,
     lineWidthMinPixels: 2,
-    getFillColor: [185, 185, 185, 105],
-    getLineColor: d => [100, 0, 255, 250],
+    getFillColor: [0, 0, 0, 150],
+    getLineColor: d => [255, 255, 255, 255],
     getRadius: 100,
     getLineWidth: 5,
     getElevation: d => 1400//+Math.log(d.properties.ELEV)*10

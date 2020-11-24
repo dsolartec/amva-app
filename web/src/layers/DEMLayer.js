@@ -15,9 +15,10 @@ const layer = new ScenegraphLayer({
         coordinates: [-75.37464, 6.1697]
     }],
     pickable: true,
-    scenegraph: terraingltf,//'https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoxAnimated/glTF-Binary/BoxAnimated.glb',
+    scenegraph: terraingltf,
     getPosition: d => d.coordinates,
     getOrientation: d => [0, 0, 90],
+    getColor: d => [0, 0, 0, 175],
     _animations: {
         '*': { speed: 5 }
     },
