@@ -4,9 +4,10 @@ import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
 import Countdown from './components/Countdown';
 
-import LayerDelanauyAMVA from './layers/DelanauyAMVA';
-import LayerDEM from './layers/DEMLayer';
-//import LayerCapsula from './layers/CapsulaLayer';
+//import LayerDelanauyAMVA from './layers/DelanauyAMVA';
+//import LayerDEM from './layers/DEMLayer';
+import LayerCapsula from './layers/CapsulaLayer';
+import LayerMata from './layers/MataLayer';
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
@@ -32,7 +33,7 @@ function App({
                 <DeckGL 
                     initialViewState={initialViewState}
                     controller={true}
-                    layers={[LayerDEM, LayerDelanauyAMVA]}
+                    layers={[LayerCapsula, LayerMata]}
                 >
                     <ReactMapGL
                         reuseMaps
