@@ -1,6 +1,6 @@
 import { GeoJsonLayer } from '@deck.gl/layers';
 
-import data from '../assets/delanauy_amva.geojson';
+import data from '../assets/models/municipios_amva.geojson';
 
 const layer = new GeoJsonLayer({
     id: 'geojson-layer',
@@ -11,11 +11,11 @@ const layer = new GeoJsonLayer({
     extruded: true,
     lineWidthScale: 20,
     lineWidthMinPixels: 2,
-    getFillColor: [0, 100, 100, 255],
-    getLineColor: d => [0, 255, 255, 255],
+    getFillColor: [185, 185, 185, 105],
+    getLineColor: d => [100, 0, 255, 250],
     getRadius: 100,
-    getLineWidth: 1,
-    getElevation: d => d.properties.ELEVACION
+    getLineWidth: 5,
+    getElevation: d => 1400//+Math.log(d.properties.ELEV)*10
 });
 
 export default layer;
