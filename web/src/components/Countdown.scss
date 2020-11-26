@@ -3,8 +3,7 @@
 .countdown {
     position: absolute;
     top: calc(100% + .5rem);
-    pointer-events: all;
-    cursor: pointer;
+    pointer-events: none;
     font-size: .85rem;
     background-color: rgba($blue, .85);
     padding: 1em 1.25em;
