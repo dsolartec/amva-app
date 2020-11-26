@@ -1,23 +1,17 @@
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import { registerLoaders } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
-import { randomPoint } from '@turf/turf';
-import mataGLB from '../assets/models/Matas.glb';
+import terraingltf from '../assets/models/CapsulaSimplificada.glb';
 
 registerLoaders(GLTFLoader);
 
-const data = randomPoint(75, {
-    bbox: [
-        -75.580053, 6.243873,
-        -75.579404, 6.243281,
-    ]
-}).features.map((e) => ({ coordinates: e.geometry.coordinates, }));
-
-const layer = new ScenegraphLayer({
-    id: 'mata-layer',
-    data,
+const LayerCapsule = new ScenegraphLayer({
+    id: 'layer_capsule',
+    data: [
+        { coordinates: [-75.579734, 6.243583] }
+    ],
     pickable: true,
-    scenegraph: mataGLB,
+    scenegraph: terraingltf,
     getPosition: d => d.coordinates,
     getOrientation: d => [0, Math.random() * 180, 90],
     _animations: {
@@ -27,4 +21,4 @@ const layer = new ScenegraphLayer({
     _lighting: 'pbr',
 });
 
-export default layer;
+export default LayerCapsule;

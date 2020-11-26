@@ -1,5 +1,4 @@
 import React from 'react';
-import { useSpring, animated } from 'react-spring';
 import './Countdown.scss';
 
 function calculateTimeLeft() {
@@ -26,15 +25,6 @@ export default function Countdown() {
     const minutes = React.useRef();
     const seconds = React.useRef();
 
-    const boxAnimation = useSpring({
-        left: '3rem',
-        opacity: 1,
-        from: {
-            left: '-24rem',
-            opacity: 0,
-        }
-    });
-
     React.useEffect(() => {
         if (years.current && days.current && hours.current && minutes.current && seconds.current && !timeCalled) {
             function setTime() {
@@ -56,7 +46,7 @@ export default function Countdown() {
     }, [timeCalled, years, days, hours, minutes, seconds]);
 
     return (
-        <animated.div className="countdown" style={boxAnimation}>
+        <div className="countdown">
             <span>Nos quedan</span>
             <h2 ref={years}>0 años,</h2>
             <h2 ref={days}>0 días,</h2>
@@ -64,6 +54,6 @@ export default function Countdown() {
             <h2 ref={minutes}>0 minutos y</h2>
             <h2 ref={seconds}>0 segundos</h2>
             <span>con agua potable...</span>
-        </animated.div>
+        </div>
     );
 }

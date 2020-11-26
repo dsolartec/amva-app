@@ -2,8 +2,8 @@ import { GeoJsonLayer } from '@deck.gl/layers';
 
 import data from '../assets/models/municipios_amva.geojson';
 
-const layer = new GeoJsonLayer({
-    id: 'geojson-layer',
+const LayerDelanauyAMVA = new GeoJsonLayer({
+    id: 'layer_delanauy_amva',
     data,
     pickable: true,
     stroked: true,
@@ -18,4 +18,4 @@ const layer = new GeoJsonLayer({
     getElevation: d => 1400
 });
 
-export default layer;
+export default LayerDelanauyAMVA;

@@ -1,0 +1,53 @@
+@import '../assets/colors.scss';
+
+.header {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    width: 14em;
+    background-color: rgba(white, .85);
+    padding: .5rem;
+    border-radius: 4px;
+
+    & > .top {
+        margin-bottom: .25rem;
+    }
+    & > .actions {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+
+        & > button {
+            border: 0;
+            border-radius: 4px;
+            padding: .25rem 1rem;
+            cursor: pointer;
+            width: 48%;
+            background-color: $lightGreen;
+            color: white;
+            font: {
+                size: .85em;
+                weight: bold;
+            }
+            letter-spacing: .02em;
+            transition:
+                .4s background-color ease-in-out,
+                .2 transform ease-in-out;
+            text-shadow: 1px 1px 0 rgba(black, .34);
+            outline: none;
+
+            &:hover {
+                background-color: $green;
+            }
+            &:active {
+                transform: scale3d(.9, .9, .9);
+            }
+        }
+    }
+}

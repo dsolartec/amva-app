@@ -1,30 +1,24 @@
 import React from 'react';
+import { INITIAL_STATE } from './states';
 import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
-import Countdown from './components/Countdown';
+import Header from './components/Header';
 
-//import LayerDelanauyAMVA from './layers/DelanauyAMVA';
-//import LayerDEM from './layers/DEMLayer';
-//import LayerP2P from './layers/P2PLayer';
-import LayerCapsula from './layers/CapsulaLayer';
-import LayerMata from './layers/MataLayer';
+// A.M.V.A. Layers
+import LayerAMVAPoints from './layers/LayerAMVAPoints';
+import LayerDEM from './layers/LayerDEM';
+import LayerDelanauyAMVA from './layers/LayerDelanauyAMVA';
 
-// Viewport settings
-const INITIAL_VIEW_STATE = {
-    longitude: -75.552464,
-    latitude: 6.326047,
-    zoom: 11,
-    pitch: 60,
-    bearing: -60
-};
+// Capsule Layers
+import LayerCapsule from './layers/LayerCapsule';
+import LayerPlants from './layers/LayerPlants';
 
-function App({
-    texture = null,
-    wireframe = true,
-    initialViewState = INITIAL_VIEW_STATE,
-    mapStyle = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
-}) {
+const INITIAL_MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
+
+function App() {
+    const [viewState, setViewState] = React.useState(INITIAL_STATE.view_state);
+    const [layers, setLayers] = React.useState(INITIAL_STATE.layers);
     const [mapLoaded, setMapLoaded] = React.useState(false);
 
     return (
@@ -32,19 +26,26 @@ function App({
             <Loader isActive={!mapLoaded} />
             <div style={{ opacity: mapLoaded ? 1 : 0 }}>
                 <DeckGL 
-                    initialViewState={initialViewState}
+                    initialViewState={viewState}
+                    layers={[
+                        LayerAMVAPoints,
+                        LayerDEM,
+                        LayerDelanauyAMVA,
+                        LayerCapsule,
+                        LayerPlants,
+                    ]}
+                    layerFilter={({ layer }) => layers.includes(layer.id)}
                     controller={true}
-                    layers={[LayerCapsula, LayerMata]}
                 >
                     <ReactMapGL
                         reuseMaps
-                        mapStyle={mapStyle}
+                        mapStyle={INITIAL_MAP_STYLE}
                         preventStyleDiffing={true}
                         onLoad={() => setMapLoaded(true)}
                     />
                 </DeckGL>
             </div>
-            {mapLoaded && <Countdown />}
+            {mapLoaded && <Header setViewState={setViewState} setLayers={setLayers} />}
         </>
     );
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Spring } from "react-spring/renderprops";
+import { Spring } from 'react-spring/renderprops';
+import Logo from './Logo';
 import './Loader.scss';
 
 export default function Loader({ isActive }) {
@@ -15,10 +16,13 @@ export default function Loader({ isActive }) {
             to={{ opacity: isActive ? 1 : 0 }}
             onRest={() => setShowing(false)}
         >
-            {props => <div style={props} className="loader">
-                <h2>Área Metropolitana del Valle de Aburrá</h2>
-                <span>Cargando mapa en 2.5D...</span>
-            </div>}
+            {props => (
+                <div style={props} className="loader">
+                    <Logo type="color" scale={3} />
+                    <h2>Área Metropolitana del Valle de Aburrá</h2>
+                    <span>¡40 años juntos!</span>
+                </div>
+            )}
         </Spring>
     );
 }

@@ -1,3 +1,5 @@
+@import "../assets/colors.scss";
+
 .loader {
     position: fixed;
     top: 0;
@@ -11,16 +13,20 @@
     align-items: center;
     justify-content: center;
 
+    & > .logo {
+        margin-bottom: 1rem;
+    }
     & > h2 {
         margin: 0;
         font: {
             size: 2em;
             weight: 500;
         }
-        color: #3f51b5;
+        color: $blue;
         letter-spacing: .02em;
     }
     & > span {
         margin-top: .5rem;
+        color: $gray;
     }
 }
