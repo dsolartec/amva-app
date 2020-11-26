@@ -7,7 +7,7 @@ export const INITIAL_STATE = {
         zoom: 10.5,
         bearing: -60,
     },
-    layers: ['layer_amva_points', 'layer_dem', 'layer_delanauy_amva'],
+    layers: ['layer_amva_points', 'layer_dem', 'arc-layer'],
 };
 
 const transitionDuration = 2500;
@@ -21,7 +21,7 @@ export const AMVA_STATE = {
         transitionDuration,
         transitionInterpolator: new FlyToInterpolator(),
     },
-    layers: ['layer_amva_points', 'layer_dem', 'layer_delanauy_amva'],
+    layers: ['layer_amva_points', 'layer_dem', 'arc-layer'],
 };
 
 export const CAPSULE_STATE = {
