@@ -30,9 +30,9 @@ function App() {
                     layers={[
                         LayerAMVAPoints,
                         LayerDEM,
-                        LayerDelanauyAMVA,
+                        // LayerDelanauyAMVA,
                         LayerCapsule,
-                        //LayerPlants,
+                        // LayerPlants,
                     ]}
                     layerFilter={({ layer }) => {
                         for (const layer_id of layers) {

@@ -1,14 +1,14 @@
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import { registerLoaders } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
-import terraingltf from '../assets/models/layer_dem_data.glb';
+import terraingltf from '../assets/models/layer_dem_amva.glb';
 
 registerLoaders(GLTFLoader);
 
 const LayerDEM = new ScenegraphLayer({
     id: 'layer_dem',
     data: [
-        { coordinates: [-75.37464, 6.1697] }
+        { coordinates: [-75.6104, 6.337] }
     ],
     scenegraph: terraingltf,
     getPosition: d => d.coordinates,
@@ -17,7 +17,7 @@ const LayerDEM = new ScenegraphLayer({
     _animations: {
         '*': { speed: 5 }
     },
-    sizeScale: 1530,
+    sizeScale: 1,
     _lighting: 'pbr',
 });
 
