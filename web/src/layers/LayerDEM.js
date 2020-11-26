@@ -1,7 +1,7 @@
 import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import { registerLoaders } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
-import terraingltf from '../assets/models/dem_amva_qgis.glb';
+import terraingltf from '../assets/models/layer_dem_data.glb';
 
 registerLoaders(GLTFLoader);
 

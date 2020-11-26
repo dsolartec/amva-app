@@ -2,7 +2,7 @@ import { ScenegraphLayer } from '@deck.gl/mesh-layers';
 import { registerLoaders } from '@loaders.gl/core';
 import { GLTFLoader } from '@loaders.gl/gltf';
 import { randomPoint } from '@turf/turf';
-import mataGLB from '../assets/models/Matas.glb';
+import plant from '../assets/models/capsule/plant.glb';
 
 registerLoaders(GLTFLoader);
 
@@ -16,7 +16,7 @@ const data = randomPoint(75, {
 const LayerPlants = new ScenegraphLayer({
     id: 'layer_plants',
     data,
-    scenegraph: mataGLB,
+    scenegraph: plant,
     getPosition: d => d.coordinates,
     getOrientation: d => [0, Math.random() * 180, 90],
     _animations: {

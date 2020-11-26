@@ -1,6 +1,5 @@
 import { GeoJsonLayer } from '@deck.gl/layers';
-
-import data from '../assets/models/municipios_amva.geojson';
+import data from '../assets/models/layer_delanauy_amva_data.geojson';
 
 const LayerDelanauyAMVA = new GeoJsonLayer({
     id: 'layer_delanauy_amva',

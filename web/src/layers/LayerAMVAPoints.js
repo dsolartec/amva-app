@@ -1,5 +1,5 @@
 import { GeoJsonLayer } from '@deck.gl/layers';
-import data from '../assets/models/p2p_municipios_amva.geojson';
+import data from '../assets/models/layer_amva_points_data.geojson';
 
 const color = [0, 109, 182, 255];
 
