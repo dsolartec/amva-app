@@ -7,6 +7,7 @@ import './Header.scss';
 export default function Header({
     setViewState,
     setLayers,
+    setMapStyle,
     onCapsuleClick,
 }) {
     const boxAnimation = useSpring({
@@ -28,12 +29,14 @@ export default function Header({
                     onClick={() => {
                         setViewState(states.AMVA_STATE.view_state);
                         setLayers(states.AMVA_STATE.layers);
+                        setMapStyle(states.AMVA_STATE.map_style);
                     }}
                 >Área</button>
                 <button
                     onClick={() => {
                         setViewState(states.CAPSULE_STATE.view_state);
                         setLayers(states.CAPSULE_STATE.layers);
+                        setMapStyle(states.CAPSULE_STATE.map_style);
                         onCapsuleClick();
                     }}
                 >Cápsula</button>

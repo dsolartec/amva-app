@@ -8,6 +8,7 @@ export const INITIAL_STATE = {
         bearing: -60,
     },
     layers: ['layer_dem', 'layer_amva_arcs'],
+    map_style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 };
 
 const transitionDuration = 2500;
@@ -22,6 +23,7 @@ export const AMVA_STATE = {
         transitionInterpolator: new FlyToInterpolator(),
     },
     layers: ['layer_dem', 'layer_amva_arcs'],
+    map_style: 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json',
 };
 
 export const CAPSULE_STATE = {
@@ -33,4 +35,5 @@ export const CAPSULE_STATE = {
         transitionInterpolator: new FlyToInterpolator(),
     },
     layers: ['layer_capsule'],
+    map_style: 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json',
 };

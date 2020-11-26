@@ -15,11 +15,10 @@ import LayerAMVAArcs from './layers/LayerAMVAArcs';
 // Capsule Layers
 import LayerCapsule from './layers/LayerCapsule';
 
-const INITIAL_MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
-
 function App() {
     const [viewState, setViewState] = React.useState(INITIAL_STATE.view_state);
     const [layers, setLayers] = React.useState(INITIAL_STATE.layers);
+    const [mapStyle, setMapStyle] = React.useState(INITIAL_STATE.map_style);
     const [mapLoaded, setMapLoaded] = React.useState(false);
     const [videoActive, setVideoActive] = React.useState(false);
 
@@ -51,7 +50,7 @@ function App() {
                 >
                     <ReactMapGL
                         reuseMaps
-                        mapStyle={INITIAL_MAP_STYLE}
+                        mapStyle={mapStyle}
                         preventStyleDiffing={true}
                         onLoad={() => setMapLoaded(true)}
                     />
@@ -62,6 +61,7 @@ function App() {
                     <Header
                         setViewState={setViewState}
                         setLayers={setLayers}
+                        setMapStyle={setMapStyle}
                         onCapsuleClick={() => setVideoActive(true)}
                     />
                     <Player active={videoActive} onVideoEnded={() => setVideoActive(false)} />
