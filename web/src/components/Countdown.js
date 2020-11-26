@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSpring, animated } from 'react-spring';
 import './Countdown.scss';
 
 function calculateTimeLeft() {
@@ -25,6 +26,15 @@ export default function Countdown() {
     const minutes = React.useRef();
     const seconds = React.useRef();
 
+    const boxAnimation = useSpring({
+        bottom: '0px',
+        right: '0px',
+        from: {
+            bottom: '-14rem',
+            right: '-14rem',
+        }
+    });
+
     React.useEffect(() => {
         if (years.current && days.current && hours.current && minutes.current && seconds.current && !timeCalled) {
             function setTime() {
@@ -32,11 +42,11 @@ export default function Countdown() {
 
                 const timeLeft = calculateTimeLeft();
 
-                years.current.innerText = `${timeLeft.years} año${timeLeft.years === 1 ? "" : "s"},`;
-                days.current.innerText = `${timeLeft.days} día${timeLeft.days === 1 ? "" : "s"},`;
-                hours.current.innerText = `${timeLeft.hours} hora${timeLeft.hours === 1 ? "" : "s"},`;
-                minutes.current.innerText = `${timeLeft.minutes} minuto${timeLeft.minutes === 1 ? "" : "s"} y`;
-                seconds.current.innerText = `${timeLeft.seconds} segundo${timeLeft.seconds === 1 ? "" : "s"}`;
+                years.current.innerText = `${timeLeft.years} ANO${timeLeft.years === 1 ? "" : "S"},`;
+                days.current.innerText = `${timeLeft.days} DIA${timeLeft.days === 1 ? "" : "S"},`;
+                hours.current.innerText = `${timeLeft.hours} HORA${timeLeft.hours === 1 ? "" : "S"},`;
+                minutes.current.innerText = `${timeLeft.minutes} MINUTO${timeLeft.minutes === 1 ? "" : "S"} Y`;
+                seconds.current.innerText = `${timeLeft.seconds} SEGUNDO${timeLeft.seconds === 1 ? "" : "S"}`;
 
                 setTimeout(setTime, 1000);
             }
@@ -46,14 +56,12 @@ export default function Countdown() {
     }, [timeCalled, years, days, hours, minutes, seconds]);
 
     return (
-        <div className="countdown">
-            <span>Nos quedan</span>
-            <h2 ref={years}>0 años,</h2>
-            <h2 ref={days}>0 días,</h2>
-            <h2 ref={hours}>0 horas,</h2>
-            <h2 ref={minutes}>0 minutos y</h2>
-            <h2 ref={seconds}>0 segundos</h2>
-            <span>con agua potable...</span>
-        </div>
+        <animated.div className="countdown" style={boxAnimation}>
+            <h2 ref={years}>0 ANOS,</h2>
+            <h2 ref={days}>0 DIAS,</h2>
+            <h2 ref={hours}>0 HORAS,</h2>
+            <h2 ref={minutes}>0 MINUTOS Y</h2>
+            <h2 ref={seconds}>0 SEGUNDOS</h2>
+        </animated.div>
     );
 }

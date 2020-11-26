@@ -2,13 +2,14 @@ import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import Logo from './Logo';
 import * as states from '../states';
-import Countdown from './Countdown';
 import './Header.scss';
 
 export default function Header({ setViewState, setLayers }) {
     const boxAnimation = useSpring({
+        top: '1rem',
         left: '1rem',
         from: {
+            top: '-14rem',
             left: '-14rem',
         },
     });
@@ -32,7 +33,6 @@ export default function Header({ setViewState, setLayers }) {
                     }}
                 >Cápsula</button>
             </div>
-            <Countdown />
         </animated.div>
     );
 }
