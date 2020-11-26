@@ -8,16 +8,15 @@ registerLoaders(GLTFLoader);
 const LayerCapsule = new ScenegraphLayer({
     id: 'layer_capsule',
     data: [
-        { coordinates: [-75.579734, 6.243583] }
+        { coordinates: [-75.579658, 6.244070] }
     ],
-    pickable: true,
     scenegraph: terraingltf,
     getPosition: d => d.coordinates,
-    getOrientation: d => [0, Math.random() * 180, 90],
+    getOrientation: d => [0, 108, 90],
     _animations: {
         '*': { speed: 5 }
     },
-    sizeScale: 10,
+    sizeScale: 2.5,
     _lighting: 'pbr',
 });
 

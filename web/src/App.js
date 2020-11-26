@@ -12,7 +12,7 @@ import LayerDelanauyAMVA from './layers/LayerDelanauyAMVA';
 
 // Capsule Layers
 import LayerCapsule from './layers/LayerCapsule';
-import LayerPlants from './layers/LayerPlants';
+//import LayerPlants from './layers/LayerPlants';
 
 const INITIAL_MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json';
 
@@ -32,9 +32,17 @@ function App() {
                         LayerDEM,
                         LayerDelanauyAMVA,
                         LayerCapsule,
-                        LayerPlants,
+                        //LayerPlants,
                     ]}
-                    layerFilter={({ layer }) => layers.includes(layer.id)}
+                    layerFilter={({ layer }) => {
+                        for (const layer_id of layers) {
+                            if (layer.id.toLowerCase().startsWith(layer_id)) {
+                                return true;
+                            }
+                        }
+
+                        return false;
+                    }}
                     controller={true}
                 >
                     <ReactMapGL

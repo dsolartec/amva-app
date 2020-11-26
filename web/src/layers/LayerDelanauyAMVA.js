@@ -5,7 +5,6 @@ import data from '../assets/models/municipios_amva.geojson';
 const LayerDelanauyAMVA = new GeoJsonLayer({
     id: 'layer_delanauy_amva',
     data,
-    pickable: true,
     stroked: true,
     filled: true,
     extruded: true,
@@ -15,7 +14,7 @@ const LayerDelanauyAMVA = new GeoJsonLayer({
     getLineColor: d => [255, 255, 255, 255],
     getRadius: 100,
     getLineWidth: 5,
-    getElevation: d => 1400
+    getElevation: d => 2800
 });
 
 export default LayerDelanauyAMVA;

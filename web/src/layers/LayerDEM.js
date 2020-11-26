@@ -10,7 +10,6 @@ const LayerDEM = new ScenegraphLayer({
     data: [
         { coordinates: [-75.37464, 6.1697] }
     ],
-    pickable: true,
     scenegraph: terraingltf,
     getPosition: d => d.coordinates,
     getOrientation: d => [0, 0, 90],

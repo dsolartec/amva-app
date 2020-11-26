@@ -6,7 +6,6 @@ const color = [0, 109, 182, 255];
 const LayerAMVAPoints = new GeoJsonLayer({
     id: 'layer_amva_points',
     data,
-    pickable: true,
     stroked: true,
     filled: true,
     extruded: true,

@@ -16,7 +16,6 @@ const data = randomPoint(75, {
 const LayerPlants = new ScenegraphLayer({
     id: 'layer_plants',
     data,
-    pickable: true,
     scenegraph: mataGLB,
     getPosition: d => d.coordinates,
     getOrientation: d => [0, Math.random() * 180, 90],

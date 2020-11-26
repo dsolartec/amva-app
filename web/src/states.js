@@ -26,9 +26,9 @@ export const AMVA_STATE = {
 
 export const CAPSULE_STATE = {
     view_state: {
-        longitude: -75.579734,
-        latitude: 6.243583,
-        zoom: 19,
+        longitude: -75.579658,
+        latitude: 6.244070,
+        zoom: 20,
         transitionDuration,
         transitionInterpolator: new FlyToInterpolator(),
     },
