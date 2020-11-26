@@ -4,11 +4,12 @@ import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
 import Header from './components/Header';
+import GL from '@luma.gl/constants';
 
 // A.M.V.A. Layers
 import LayerAMVAPoints from './layers/LayerAMVAPoints';
 import LayerDEM from './layers/LayerDEM';
-import LayerDelanauyAMVA from './layers/LayerDelanauyAMVA';
+import LayerAMVAArcs from './layers/LayerAMVAArcs';
 
 // Capsule Layers
 import LayerCapsule from './layers/LayerCapsule';
@@ -28,14 +29,15 @@ function App() {
                 <DeckGL 
                     initialViewState={viewState}
                     layers={[
-                        LayerAMVAPoints,
+                        LayerAMVAArcs,
                         LayerDEM,
-                        LayerDelanauyAMVA,
+                        // LayerDelanauyAMVA,
                         LayerCapsule,
-                        //LayerPlants,
+                        // LayerPlants,
                     ]}
                     layerFilter={({ layer }) => {
                         for (const layer_id of layers) {
+                            console.log(layer_id)
                             if (layer.id.toLowerCase().startsWith(layer_id)) {
                                 return true;
                             }
@@ -44,6 +46,10 @@ function App() {
                         return false;
                     }}
                     controller={true}
+                    parameters={{
+                        blendFunc: [GL.SRC_ALPHA, GL.ONE, GL.ONE_MINUS_DST_ALPHA, GL.ONE],
+                        blendEquation: GL.FUNC_ADD
+                      }}
                 >
                     <ReactMapGL
                         reuseMaps
