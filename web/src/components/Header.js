@@ -4,7 +4,11 @@ import Logo from './Logo';
 import * as states from '../states';
 import './Header.scss';
 
-export default function Header({ setViewState, setLayers }) {
+export default function Header({
+    setViewState,
+    setLayers,
+    onCapsuleClick,
+}) {
     const boxAnimation = useSpring({
         top: '1rem',
         left: '1rem',
@@ -30,6 +34,7 @@ export default function Header({ setViewState, setLayers }) {
                     onClick={() => {
                         setViewState(states.CAPSULE_STATE.view_state);
                         setLayers(states.CAPSULE_STATE.layers);
+                        onCapsuleClick();
                     }}
                 >Cápsula</button>
             </div>

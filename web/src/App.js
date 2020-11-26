@@ -2,10 +2,11 @@ import React from 'react';
 import { INITIAL_STATE } from './states';
 import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
+import GL from '@luma.gl/constants';
 import ReactMapGL from 'react-map-gl';
 import Header from './components/Header';
+import Player from './components/Player';
 import Countdown from './components/Countdown';
-import GL from '@luma.gl/constants';
 
 // A.M.V.A. Layers
 import LayerDEM from './layers/LayerDEM';
@@ -20,6 +21,7 @@ function App() {
     const [viewState, setViewState] = React.useState(INITIAL_STATE.view_state);
     const [layers, setLayers] = React.useState(INITIAL_STATE.layers);
     const [mapLoaded, setMapLoaded] = React.useState(false);
+    const [videoActive, setVideoActive] = React.useState(false);
 
     return (
         <>
@@ -57,7 +59,12 @@ function App() {
             </div>
             {mapLoaded && (
                 <>
-                    <Header setViewState={setViewState} setLayers={setLayers} />
+                    <Header
+                        setViewState={setViewState}
+                        setLayers={setLayers}
+                        onCapsuleClick={() => setVideoActive(true)}
+                    />
+                    <Player active={videoActive} onVideoEnded={() => setVideoActive(false)} />
                     <Countdown />
                 </>
             )}
