@@ -1,14 +1,9 @@
 @import '../assets/colors.scss';
 
-@font-face {
-    font-family: AlarmClock;
-    src: url('../assets/fonts/Alarm-Clock.ttf');
-}
-
 .countdown {
     font: {
-        family: AlarmClock;
-        size: 1.4rem;
+        family: SegoeUI;
+        size: 1.2rem;
     }
     background-color: rgba($gray, .6);
     padding: .5em 1em;
@@ -18,8 +13,23 @@
         shadow: 1px 2px 0 rgba(black, .5);
     }
     color: white;
+    pointer-events: none;
 
-    @media (max-width: 640px) {
-        font-size: 1rem;
+    @media (max-width: 575.98px) {
+        font-size: .8rem;
+        width: 100%;
+        border-radius: 0;
+        padding: .35em .5em;
+    }
+
+    & > span {
+        display: block;
+        width: 100%;
+        font-size: .85em;
+
+        @media (max-width: 575.98px) {
+            margin-bottom: .25rem;
+            font-size: .9em;
+        }
     }
 }

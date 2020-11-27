@@ -10,6 +10,10 @@ export default function Player({ active, onVideoEnded }) {
     const videoSource = React.useRef();
 
     if (!active) {
+        if (!isShowing) {
+            setShowing(true);
+        }
+
         return null;
     }
 

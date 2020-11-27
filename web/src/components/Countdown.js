@@ -43,11 +43,12 @@ export default function Countdown() {
 
     return (
         <animated.div className="countdown" style={boxAnimation}>
-            {time.years} ANO{time.years === 1 ? '' : 's'},
-            {time.days} DIA{time.days === 1 ? '' : 's'},
-            {time.hours} HORA{time.hours === 1 ? '' : 's'},
-            {time.minutes} MINUTO{time.minutes === 1 ? '' : 's'} Y
-            {' ' + time.seconds} SEGUNDO{time.seconds === 1 ? '' : 's'}
+            <span>En el 2030 acabaremos con nuestros recursos hídricos si no los gestionamos de manera adecuada.</span>
+            {time.years} AÑO{time.years === 1 ? '' : 'S'},
+            {' ' + time.days} DÍA{time.days === 1 ? '' : 'S'},
+            {' ' + time.hours} HORA{time.hours === 1 ? '' : 'S'},
+            {' ' + time.minutes} MINUTO{time.minutes === 1 ? '' : 'S'} Y
+            {' ' + time.seconds} SEGUNDO{time.seconds === 1 ? '' : 'S'}
         </animated.div>
     );
 }

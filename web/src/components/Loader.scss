@@ -13,8 +13,16 @@
     align-items: center;
     justify-content: center;
 
+    @media (max-width: 575.98px) {
+        padding: 1rem;
+    }
+
     & > .logo {
         margin-bottom: 1rem;
+
+        @media (max-width: 575.98px) {
+            margin-bottom: .5rem;
+        }
     }
     & > h2 {
         margin: 0;
@@ -24,9 +32,20 @@
         }
         color: $blue;
         letter-spacing: .02em;
+        text-align: center;
+
+        @media (max-width: 575.98px) {
+            font-size: 1.2em;
+        }
     }
     & > span {
         margin-top: .5rem;
         color: $gray;
+
+        @media (max-width: 575.98px) {
+            font-size: .8em;
+            letter-spacing: .02em;
+            margin-top: .25rem;
+        }
     }
 }

@@ -2,16 +2,40 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    max-width: 720px;
+    max-width: 900px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: flex-end;
+    pointer-events: none;
+
+    @media (max-width: 575.98px) {
+        max-width: 100%;
+        width: 100%;
+    }
 
     & > .text {
-        width: 97%;
-        margin: 0 auto;
-        margin-bottom: .5rem;
+        max-width: 65%;
+        margin-bottom: .25rem;
+        margin-right: 1rem;
         background-color: rgba(white, .5);
         border-radius: 4px;
         padding: .5rem 1rem;
         font-family: VagRounded;
         letter-spacing: .02em;
+        pointer-events: none;
+
+        @media (max-width: 991.98px) {
+            margin-right: .5rem;
+        }
+
+        @media (max-width: 575.98px) {
+            max-width: 100%;
+            width: 100%;
+            margin-right: 0;
+            margin-bottom: 0;
+            font-size: .85rem;
+            border-radius: 0;
+            padding: .5rem;
+        }
     }
 }

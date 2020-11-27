@@ -2,8 +2,20 @@
 .player {
     width: 400px;
     height: 300px;
-    margin-left: calc(50% - (400px / 5));
-    margin-bottom: 2rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+
+    @media (max-width: 991.98px) {
+        width: 320px;
+        height: 240px;
+        margin-bottom: .5rem;
+        margin-right: .5rem;
+    }
+
+    @media (max-width: 575.98px) {
+        margin-bottom: 0;
+        margin-right: 0;
+    }
 
     & > video {
         width: 100%;
