@@ -11,16 +11,6 @@ export default function Player({ size, active, onVideoEnded }) {
         return null;
     }
 
-    let [width, height] = [640, 480];
-
-    if (size === 'medium') {
-        width = 800;
-        height = 600;
-    } else if (size === 'big') {
-        width = 960;
-        height = 720;
-    }
-
     return (
         <div className="player">
             <div className="box">
