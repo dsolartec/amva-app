@@ -12,6 +12,7 @@ import LayerAMVAArcs from './layers/LayerAMVAArcs';
 
 // Capsule Layers
 import LayerCapsule from './layers/LayerCapsule';
+import LayerPlants from './layers/LayerPlants';
 
 // Marker Layer
 import LayerMarker from './layers/LayerMarker';
@@ -34,6 +35,7 @@ function App() {
                         LayerDEM,
                         LayerCapsule,
                         LayerMarker,
+                        LayerPlants
                     ]}
                     layerFilter={({ layer }) => {
                         for (const layer_id of layers) {
