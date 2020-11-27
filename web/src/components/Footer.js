@@ -19,6 +19,7 @@ export default function Footer({ view }) {
         }
     } else if (videoActive) {
         setVideoActive(false);
+        setVideoPlayed(false);
     }
 
     return (
