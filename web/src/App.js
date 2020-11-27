@@ -21,6 +21,7 @@ function App() {
     const [mapLoaded, setMapLoaded] = React.useState(false);
     const [videoActive, setVideoActive] = React.useState(false);
 
+    
     return (
         <>
             <Loader isActive={!mapLoaded} />

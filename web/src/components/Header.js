@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
 import Logo from './Logo';
 import * as states from '../states';
@@ -19,6 +19,10 @@ export default function Header({
         },
     });
 
+    useEffect(() => {
+        setViewState(states.AMVA_STATE_270deg.view_state);
+    },[])
+
     return (
         <animated.div className="header" style={boxAnimation}>
             <div className="top">
@@ -30,6 +34,7 @@ export default function Header({
                         setViewState(states.AMVA_STATE.view_state);
                         setLayers(states.AMVA_STATE.layers);
                         setMapStyle(states.AMVA_STATE.map_style);
+                        setViewState(states.AMVA_STATE_180deg.view_state);
                     }}
                 >Área</button>
                 <button
