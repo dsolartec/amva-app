@@ -1,5 +1,5 @@
 import React from 'react';
-import { INITIAL_STATE, AMVA_STATE_270deg } from './states';
+import { INITIAL_STATE, AMVA_STATE_270deg, CAPSULE_STATE } from './states';
 import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
@@ -45,6 +45,14 @@ function App() {
                         return false;
                     }}
                     controller={true}
+                    onClick={({ layer }) => {
+                        if (layer && layer.id === 'layer_marker') {
+                            setCurrentView('capsule');
+                            setViewState(CAPSULE_STATE.view_state);
+                            setLayers(CAPSULE_STATE.layers);
+                            setMapStyle(CAPSULE_STATE.map_style);
+                        }
+                    }}
                 >
                     <ReactMapGL
                         reuseMaps

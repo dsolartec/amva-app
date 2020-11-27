@@ -12,9 +12,13 @@ export default function Footer({ view }) {
     const [videoPlayed, setVideoPlayed] = React.useState(false);
     const [videoActive, setVideoActive] = React.useState(false);
 
-    if (view === 'capsule' && !videoActive && !videoPlayed) {
-        setVideoActive(true);
-        setVideoPlayed(true);
+    if (view === 'capsule') {
+        if (!videoActive && !videoPlayed) {
+            setVideoActive(true);
+            setVideoPlayed(true);
+        }
+    } else if (videoActive) {
+        setVideoActive(false);
     }
 
     return (
