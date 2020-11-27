@@ -2,7 +2,6 @@ import React from 'react';
 import { INITIAL_STATE } from './states';
 import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
-import GL from '@luma.gl/constants';
 import ReactMapGL from 'react-map-gl';
 import Header from './components/Header';
 import Player from './components/Player';
@@ -43,10 +42,6 @@ function App() {
                         return false;
                     }}
                     controller={true}
-                    parameters={{
-                        blendFunc: [GL.SRC_ALPHA, GL.ONE, GL.ONE_MINUS_DST_ALPHA, GL.ONE],
-                        blendEquation: GL.FUNC_ADD
-                    }}
                 >
                     <ReactMapGL
                         reuseMaps

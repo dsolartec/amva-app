@@ -23,7 +23,7 @@ export default function Player({ size, active, onVideoEnded }) {
 
     return (
         <div className="player">
-            <div className="box" style={{ width, height }}>
+            <div className="box">
                 <video
                     src={celeste_lowres}
                     ref={videoSource}
