@@ -14,6 +14,9 @@ import LayerAMVAArcs from './layers/LayerAMVAArcs';
 // Capsule Layers
 import LayerCapsule from './layers/LayerCapsule';
 
+// Marker Layer
+import LayerMarker from './layers/LayerMarker';
+
 function App() {
     const [viewState, setViewState] = React.useState(INITIAL_STATE.view_state);
     const [layers, setLayers] = React.useState(INITIAL_STATE.layers);
@@ -32,6 +35,7 @@ function App() {
                         LayerAMVAArcs,
                         LayerDEM,
                         LayerCapsule,
+                        LayerMarker,
                     ]}
                     layerFilter={({ layer }) => {
                         for (const layer_id of layers) {
