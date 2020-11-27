@@ -67,6 +67,6 @@ export const CAPSULE_STATE = {
         transitionDuration: 6000,
         transitionInterpolator: new FlyToInterpolator(),
     },
-    layers: ['layer_capsule', 'layer_amva_arcs'],
+    layers: ['layer_capsule', 'layer_amva_arcs','layer_plants'],
     map_style: 'https://basemaps.cartocdn.com/gl/positron-nolabels-gl-style/style.json',
 };

@@ -6,10 +6,10 @@ import plant from '../assets/models/capsule/plant.glb';
 
 registerLoaders(GLTFLoader);
 
-const data = randomPoint(75, {
+const data = randomPoint(15, {
     bbox: [
-        -75.580053, 6.243873,
-        -75.579404, 6.243281,
+        -75.57965911924839,6.244065942560088,
+        -75.57965744286776,6.244073608164196
     ]
 }).features.map((e) => ({ coordinates: e.geometry.coordinates, }));
 
@@ -22,7 +22,7 @@ const LayerPlants = new ScenegraphLayer({
     _animations: {
         '*': { speed: 5 }
     },
-    sizeScale: 10,
+    sizeScale: 5,
     _lighting: 'pbr',
 });
 
