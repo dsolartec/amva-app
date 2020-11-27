@@ -13,13 +13,10 @@ export default function Player({ active, onVideoEnded }) {
         return null;
     }
 
-    const fromPosition = isShowing ? '-40rem' : '1rem';
-    const toPosition = isShowing ? '1rem' : '-40rem';
-
     return (
         <Spring
-            from={{ right: fromPosition, top: fromPosition }}
-            to={{ right: toPosition, top: toPosition }}
+            from={{ opacity: isShowing ? 0 : 1 }}
+            to={{ opacity: isShowing ? 1 : 0 }}
             onRest={() => onVideoEnded}
         >
             {props => (

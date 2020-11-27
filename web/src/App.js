@@ -4,8 +4,7 @@ import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
 import Header from './components/Header';
-import Player from './components/Player';
-import Countdown from './components/Countdown';
+import Footer from './components/Footer';
 
 // A.M.V.A. Layers
 import LayerDEM from './layers/LayerDEM';
@@ -15,11 +14,11 @@ import LayerAMVAArcs from './layers/LayerAMVAArcs';
 import LayerCapsule from './layers/LayerCapsule';
 
 function App() {
+    const [currentView, setCurrentView] = React.useState('amva');
     const [viewState, setViewState] = React.useState(INITIAL_STATE.view_state);
     const [layers, setLayers] = React.useState(INITIAL_STATE.layers);
     const [mapStyle, setMapStyle] = React.useState(INITIAL_STATE.map_style);
     const [mapLoaded, setMapLoaded] = React.useState(false);
-    const [videoActive, setVideoActive] = React.useState(false);
 
     return (
         <>
@@ -60,10 +59,9 @@ function App() {
                         setViewState={setViewState}
                         setLayers={setLayers}
                         setMapStyle={setMapStyle}
-                        onClick={(type) => setVideoActive(type === 'capsule')}
+                        onClick={(type) => setCurrentView(type)}
                     />
-                    <Player active={videoActive} onVideoEnded={() => setVideoActive(false)} />
-                    <Countdown />
+                    <Footer view={currentView} />
                 </>
             )}
         </>
