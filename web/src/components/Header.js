@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSpring, animated } from 'react-spring';
 import Logo from './Logo';
 import * as states from '../states';
@@ -8,7 +8,7 @@ export default function Header({
     setViewState,
     setLayers,
     setMapStyle,
-    onCapsuleClick,
+    onClick,
 }) {
     const boxAnimation = useSpring({
         top: '1rem',
@@ -19,10 +19,6 @@ export default function Header({
         },
     });
 
-    useEffect(() => {
-        setViewState(states.AMVA_STATE_270deg.view_state);
-    },[])
-
     return (
         <animated.div className="header" style={boxAnimation}>
             <div className="top">
@@ -31,10 +27,11 @@ export default function Header({
             <div className="actions">
                 <button
                     onClick={() => {
-                        setViewState(states.AMVA_STATE.view_state);
-                        setLayers(states.AMVA_STATE.layers);
-                        setMapStyle(states.AMVA_STATE.map_style);
                         setViewState(states.AMVA_STATE_180deg.view_state);
+                        setLayers(states.AMVA_STATE_180deg.layers);
+                        setMapStyle(states.AMVA_STATE_180deg.map_style);
+                        setViewState(states.AMVA_STATE_180deg.view_state);
+                        onClick('amva');
                     }}
                 >Área</button>
                 <button
@@ -42,7 +39,7 @@ export default function Header({
                         setViewState(states.CAPSULE_STATE.view_state);
                         setLayers(states.CAPSULE_STATE.layers);
                         setMapStyle(states.CAPSULE_STATE.map_style);
-                        onCapsuleClick();
+                        onClick('capsule');
                     }}
                 >Cápsula</button>
             </div>

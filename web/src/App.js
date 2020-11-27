@@ -1,5 +1,5 @@
 import React from 'react';
-import { INITIAL_STATE } from './states';
+import { INITIAL_STATE, AMVA_STATE_270deg } from './states';
 import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
@@ -24,7 +24,6 @@ function App() {
     const [mapLoaded, setMapLoaded] = React.useState(false);
     const [videoActive, setVideoActive] = React.useState(false);
 
-    
     return (
         <>
             <Loader isActive={!mapLoaded} />
@@ -52,7 +51,10 @@ function App() {
                         reuseMaps
                         mapStyle={mapStyle}
                         preventStyleDiffing={true}
-                        onLoad={() => setMapLoaded(true)}
+                        onLoad={() => {
+                            setMapLoaded(true);
+                            setViewState(AMVA_STATE_270deg.view_state);
+                        }}
                     />
                 </DeckGL>
             </div>
@@ -62,7 +64,7 @@ function App() {
                         setViewState={setViewState}
                         setLayers={setLayers}
                         setMapStyle={setMapStyle}
-                        onCapsuleClick={() => setVideoActive(true)}
+                        onClick={(type) => setVideoActive(type === 'capsule')}
                     />
                     <Player active={videoActive} onVideoEnded={() => setVideoActive(false)} />
                     <Countdown />

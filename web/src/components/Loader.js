@@ -20,7 +20,7 @@ export default function Loader({ isActive }) {
                 <div style={props} className="loader">
                     <Logo type="color" scale={3} />
                     <h2>Área Metropolitana del Valle de Aburrá</h2>
-                    <span>¡40 años juntos!</span>
+                    <span>¡40 años conectados de punto a punto!</span>
                 </div>
             )}
         </Spring>

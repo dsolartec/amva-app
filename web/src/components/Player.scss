@@ -1,25 +1,18 @@
 
 .player {
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 1rem;
+    right: 1rem;
     z-index: 1000;
-    width: 640px;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: flex-start;
-    justify-content: flex-end;
-    & > .box {
-        & > video {
-            width: 640px;
-            cursor: pointer;
-            @media (max-width: 640px) {
-                padding: 0;
-                width: 300px;
-            }
+
+    & > video {
+        width: 640px;
+        height: 480px;
+        cursor: pointer;
+
+        @media (max-width: 640px) {
+            padding: 0;
+            width: 300px;
         }
-        background-color: white;
-        padding: .25rem;
-        border-radius: 4px;
     }
 }
