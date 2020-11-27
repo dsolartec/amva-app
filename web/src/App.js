@@ -1,11 +1,10 @@
 import React from 'react';
-import { INITIAL_STATE, AMVA_STATE_270deg } from './states';
+import { INITIAL_STATE, AMVA_STATE_270deg, CAPSULE_STATE } from './states';
 import Loader from './components/Loader';
 import DeckGL from '@deck.gl/react';
 import ReactMapGL from 'react-map-gl';
 import Header from './components/Header';
-import Player from './components/Player';
-import Countdown from './components/Countdown';
+import Footer from './components/Footer';
 
 // A.M.V.A. Layers
 import LayerDEM from './layers/LayerDEM';
@@ -19,11 +18,11 @@ import LayerPlants from './layers/LayerPlants';
 import LayerMarker from './layers/LayerMarker';
 
 function App() {
+    const [currentView, setCurrentView] = React.useState('amva');
     const [viewState, setViewState] = React.useState(INITIAL_STATE.view_state);
     const [layers, setLayers] = React.useState(INITIAL_STATE.layers);
     const [mapStyle, setMapStyle] = React.useState(INITIAL_STATE.map_style);
     const [mapLoaded, setMapLoaded] = React.useState(false);
-    const [videoActive, setVideoActive] = React.useState(false);
 
     return (
         <>
@@ -48,7 +47,14 @@ function App() {
                         return false;
                     }}
                     controller={true}
-                    onClick={setViewState}
+                    onClick={({ layer }) => {
+                        if (layer && layer.id === 'layer_marker') {
+                            setCurrentView('capsule');
+                            setViewState(CAPSULE_STATE.view_state);
+                            setLayers(CAPSULE_STATE.layers);
+                            setMapStyle(CAPSULE_STATE.map_style);
+                        }
+                    }}
                 >
                     <ReactMapGL
                         reuseMaps
@@ -67,10 +73,9 @@ function App() {
                         setViewState={setViewState}
                         setLayers={setLayers}
                         setMapStyle={setMapStyle}
-                        onClick={(type) => setVideoActive(type === 'capsule')}
+                        onClick={(type) => setCurrentView(type)}
                     />
-                    <Player active={videoActive} onVideoEnded={() => setVideoActive(false)} />
-                    <Countdown />
+                    <Footer view={currentView} />
                 </>
             )}
         </>

@@ -20,48 +20,34 @@ function calculateTimeLeft() {
 
 export default function Countdown() {
     const [timeCalled, setTimeCalled] = React.useState(false);
-    const years = React.useRef();
-    const days = React.useRef();
-    const hours = React.useRef();
-    const minutes = React.useRef();
-    const seconds = React.useRef();
+    const [time, setTime] = React.useState({ years: 0, days: 0, hours: 0, minutes: 0, seconds: 0 });
 
     const boxAnimation = useSpring({
-        bottom: '0px',
-        right: '0px',
+        marginBottom: '0px',
+        marginRight: '0px',
         from: {
-            bottom: '-14rem',
-            right: '-14rem',
+            marginBottom: '-14rem',
+            marginRight: '-14rem',
         }
     });
 
-    React.useEffect(() => {
-        if (years.current && days.current && hours.current && minutes.current && seconds.current && !timeCalled) {
-            function setTime() {
-                setTimeCalled(true);
-
-                const timeLeft = calculateTimeLeft();
-
-                years.current.innerText = `${timeLeft.years} ANO${timeLeft.years === 1 ? "" : "S"},`;
-                days.current.innerText = `${timeLeft.days} DIA${timeLeft.days === 1 ? "" : "S"},`;
-                hours.current.innerText = `${timeLeft.hours} HORA${timeLeft.hours === 1 ? "" : "S"},`;
-                minutes.current.innerText = `${timeLeft.minutes} MINUTO${timeLeft.minutes === 1 ? "" : "S"} Y`;
-                seconds.current.innerText = `${timeLeft.seconds} SEGUNDO${timeLeft.seconds === 1 ? "" : "S"}`;
-
-                setTimeout(setTime, 1000);
-            }
-
-            setTimeout(setTime, 1000);
+    if (!timeCalled) {
+        function setTimeCall() {
+            setTimeCalled(true);
+            setTime(calculateTimeLeft());
+            setTimeout(setTimeCall, 1000);
         }
-    }, [timeCalled, years, days, hours, minutes, seconds]);
+
+        setTimeout(setTimeCall, 1000);
+    }
 
     return (
         <animated.div className="countdown" style={boxAnimation}>
-            <h2 ref={years}>0 ANOS,</h2>
-            <h2 ref={days}>0 DIAS,</h2>
-            <h2 ref={hours}>0 HORAS,</h2>
-            <h2 ref={minutes}>0 MINUTOS Y</h2>
-            <h2 ref={seconds}>0 SEGUNDOS</h2>
+            {time.years} ANO{time.years === 1 ? '' : 's'},
+            {time.days} DIA{time.days === 1 ? '' : 's'},
+            {time.hours} HORA{time.hours === 1 ? '' : 's'},
+            {time.minutes} MINUTO{time.minutes === 1 ? '' : 's'} Y
+            {' ' + time.seconds} SEGUNDO{time.seconds === 1 ? '' : 's'}
         </animated.div>
     );
 }
