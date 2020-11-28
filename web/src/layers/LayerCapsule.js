@@ -8,8 +8,12 @@ registerLoaders(GLTFLoader);
 const LayerCapsule = new ScenegraphLayer({
     id: 'layer_capsule',
     data: [
-        { coordinates: [-75.579658, 6.244070] }
+        {
+            id: 'layer_capsule',
+            coordinates: [-75.579658, 6.244070]
+        }
     ],
+    pickable: true,
     scenegraph: capsule,
     getPosition: d => d.coordinates,
     getOrientation: d => [0, 107.5, 90],
