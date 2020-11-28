@@ -59,10 +59,10 @@ export const AMVA_STATE_270deg = {
 
 export const CAPSULE_STATE = {
     view_state: {
-        longitude: -75.5795,
-        latitude: 6.2442,
+        longitude: -75.5796,
+        latitude: 6.2440,
         zoom: 20,
-        bearing: 40,
+        bearing: 20,
         pitch: 60,
         transitionDuration: 6000,
         transitionInterpolator: new FlyToInterpolator(),

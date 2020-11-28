@@ -17,7 +17,7 @@ const LayerPlants = new ScenegraphLayer({
     _animations: {
         '*': { speed: 5 }
     },
-    sizeScale: 5,
+    sizeScale: 7,
     _lighting: 'pbr',
 });
 

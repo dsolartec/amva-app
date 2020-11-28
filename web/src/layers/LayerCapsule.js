@@ -20,7 +20,7 @@ const LayerCapsule = new ScenegraphLayer({
     _animations: {
         '*': { speed: 5 }
     },
-    sizeScale: 4,
+    sizeScale: 7,
     _lighting: 'pbr',
 });
 
