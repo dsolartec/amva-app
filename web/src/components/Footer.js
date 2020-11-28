@@ -1,5 +1,4 @@
 import React from 'react';
-import Player from './Player';
 import Countdown from './Countdown';
 import './Footer.scss';
 
@@ -24,7 +23,6 @@ export default function Footer({ view }) {
 
     return (
         <div className="footer">
-            <Player active={videoActive} onVideoEnded={() => setVideoActive(false)} />
             <div className="text">{texts[view]}</div>
             <Countdown />
         </div>
