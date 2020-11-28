@@ -1,4 +1,4 @@
-import {IconLayer} from '@deck.gl/layers';
+import { IconLayer } from '@deck.gl/layers';
 import IconMarker from '../assets/images/icon-atlas.png';
 
 const ICON_MAPPING = {
@@ -12,7 +12,10 @@ const ICON_MAPPING = {
 };
 
 const data = [
-    { coordinates: [-75.579658, 6.244070] },
+    {
+        id: 'layer_marker',
+        coordinates: [-75.579658, 6.244070]
+    },
 ];
 
 const LayerMarker = new IconLayer({

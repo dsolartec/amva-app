@@ -47,6 +47,11 @@ function App() {
                         return false;
                     }}
                     controller={true}
+                    getTooltip={({ object }) => {
+                        if (object && object.id === 'layer_marker') {
+                            return '¡Haz click aquí para ver la cápsula de cerca!';
+                        }
+                    }}
                     onClick={({ layer }) => {
                         if (layer && layer.id === 'layer_marker') {
                             setCurrentView('capsule');
