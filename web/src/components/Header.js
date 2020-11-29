@@ -9,6 +9,7 @@ export default function Header({
     setLayers,
     setMapStyle,
     onClick,
+    inStreaming,
 }) {
     const boxAnimation = useSpring({
         top: '1rem',
@@ -34,14 +35,14 @@ export default function Header({
                         onClick('amva');
                     }}
                 >Área</button>
-                <button
+                {(!inStreaming) && (<button
                     onClick={() => {
                         setViewState(states.CAPSULE_STATE.view_state);
                         setLayers(states.CAPSULE_STATE.layers);
                         setMapStyle(states.CAPSULE_STATE.map_style);
                         onClick('capsule');
                     }}
-                >Cápsula</button>
+                >Cápsula</button>)}
             </div>
         </animated.div>
     );

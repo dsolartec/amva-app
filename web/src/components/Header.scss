@@ -20,13 +20,14 @@
         display: flex;
         flex-flow: row wrap;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 100%;
 
         & > button {
             border: 0;
             border-radius: 4px;
             padding: .25rem 1rem;
+            margin: 2px;
             cursor: pointer;
             width: 48%;
             background-color: $lightGreen;
