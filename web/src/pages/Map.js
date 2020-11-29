@@ -56,7 +56,7 @@ export default function Map({
                             if (object.id === 'layer_marker') {
                                 return '¡Haz click aquí para ver la cápsula de cerca!';
                             } else if (object.id === 'layer_capsule') {
-                                return '¡Haz click aquí para ver lo que ocurre dentro de la cápsula a tiempo real!';
+                                return '¡Haz click aquí para ver lo que ocurre dentro de la cápsula!';
                             }
                         }
                     }}
@@ -68,6 +68,10 @@ export default function Map({
                                 setLayers(CAPSULE_STATE.layers);
                                 setMapStyle(CAPSULE_STATE.map_style);
                             } else if (layer.id === 'layer_capsule') {
+                                setCurrentView('amva');
+                                setViewState(AMVA_STATE_270deg.view_state);
+                                setLayers(AMVA_STATE_270deg.layers);
+                                setMapStyle(AMVA_STATE_270deg.map_style);
                                 onCapsuleClick();
                             }
                         }
