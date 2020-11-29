@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSpring, animated } from 'react-spring';
-import StreamingTest from '../assets/videos/capsula.mp4';
+import StreamingTest from '../assets/videos/capsula.webm';
 import './Streaming.scss';
 
 export default function Streaming({ onBackClick }) {
