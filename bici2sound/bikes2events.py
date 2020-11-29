@@ -77,11 +77,29 @@ for event in data:
 
 		#print beginning[:2], lista_estaciones.index(event['descripcionPrestamo']), lista_estaciones.index(event['descripcionDevolucion']), diff
 
-fileout = open("20201121.txt", "w")
+# crear el archivo para las visualizaciones tipo1
+# fileout = open("20201121.txt", "w")
+# for key in out_dict:
+# 	print key, out_dict[key]
+# 	line=" ".join(str(x) for x in out_dict[key])
+# 	fileout.write(str(key)+", "+str(line)+";"+"\n")
+# 	#print >>fileout, key+',',str(line)+';'
+
+# fileout.close()
+
+##################################################
+# crear el archivo para las visualizaciones tipo2
+################## histogramas ###################
+##################################################
+
+fileout = open("20201121-histo.txt", "w")
 for key in out_dict:
 	print key, out_dict[key]
-	line=" ".join(str(x) for x in out_dict[key])
-	fileout.write(str(key)+", "+str(line)+";"+"\n")
-	#print >>fileout, key+',',str(line)+';'
+	print key, "salida", out_dict[key][0::3]
+	print key, "llegada", out_dict[key][1::3]
+	line=" ".join(str(x) for x in out_dict[key][0::3]) 
+	fileout.write(str(key)+"s"+", "+str(line)+";"+"\n")
+	line=" ".join(str(x) for x in out_dict[key][1::3]) 
+	fileout.write(str(key)+"l"+", "+str(line)+";"+"\n")
 
 fileout.close()
