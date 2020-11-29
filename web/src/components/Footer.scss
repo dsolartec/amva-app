@@ -2,19 +2,15 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    max-width: 900px;
+    max-width: 100%;
+    width: 100%;
     display: flex;
     flex-flow: column wrap;
     align-items: flex-end;
     pointer-events: none;
 
-    @media (max-width: 575.98px) {
-        max-width: 100%;
-        width: 100%;
-    }
-
     & > .text {
-        max-width: 65%;
+        max-width: 50%;
         margin-bottom: .25rem;
         margin-right: 1rem;
         background-color: rgba(white, .5);

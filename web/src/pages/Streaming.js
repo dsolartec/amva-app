@@ -13,7 +13,7 @@ export default function Streaming({ onBackClick }) {
 
     return (
         <animated.div className="streaming" style={boxAnimation}>
-            <button onClick={() => onBackClick()}>Volver al mapa</button>
+            <button onClick={() => onBackClick()}>Área</button>
             <video src={StreamingTest} autoPlay={true} loop={true} />
         </animated.div>
     );
