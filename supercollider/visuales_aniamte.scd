@@ -3,12 +3,12 @@ s.boot;
 (
 m= NetAddr("127.0.0.1", 57121);//IP y puerto por el que envio las cosas
 o= NetAddr("127.0.0.1", 57121);
-NetAddr.new("127.0.0.1",57120);
+NetAddr.new("127.0.0.1",57120);//IP y puerto por el que recibo las cosas
 );
-//Velocidad frame
+
 (
-v = 4000;
-m.sendMsg("/uv_radiation/yesterday", v);
+v = 4000;//Velocidad frame
+m.sendMsg("/uv_radiation/yesterday", v);//Mensaje para consultar los datos
 /*o.sendMsg("/sightings/last_week", v);*/
 )
 )
@@ -24,7 +24,8 @@ OSCdef.new(
 		[msg[0]].postln;
 		[msg[1]].postln;
 		[msg[2]].postln;
-		[msg[3]].postln;//imprimo lo que me llega para ir viendo, pero esto se puede comentar
+		[msg[3]].postln; //imprimo lo que me llega para ir viendo, pero esto se puede comentar.
+		
 		r = msg[1].abs.explin(0.04,13,0.3,1);//Rojo
 		g = msg[1].abs.explin(0.04,13,0.8,0.1); // Verde
 		b = msg[1].abs.explin(0.04,13,0.1,0.8); // Azul
@@ -40,17 +41,16 @@ OSCdef.new(
 		k = msg[1].abs.explin(0.04,15,56,61);//nota dos
 		h = msg[1].abs.explin(0.04,15,66,72);//nota tres
 		j = msg[1].abs.explin(0.04,15,62,72);//nota tres
-		/*w.set(\acordes,[c,k,h].midicps,\am,1);
-		u.set(\acordes,[c,k,h].midicps*(24).midiratio);
-		("Acorde que suena en notas midi es: " + c + "-" + k + "-" + h).postln*/ //modificar el audio de manera correcata
-
+		/*w.set(\acordes,[c,k,h].midicps,\am,1); //Forma correcta de cargar los acordes
+		u.set(\acordes,[c,k,h].midicps*(24).midiratio);//Forma correcta de cargar los acordes
+		("Acorde que suena en notas midi es: " + c + "-" + k + "-" + h).postln //Imprimir los acordes en notas midi   */ 
 
 		//Modificaición de audio actual desordenada
 		w.set(\acordes,[msg[1].abs.explin(0.04,15,48,56),msg[1].abs.explin(0.04,15,57,60),msg[1].abs.explin(0.04,15,60,69)].midicps*(24).midiratio,\am,1);
 		u.set(\acordes2,[msg[1].abs.explin(0.04,8,62,70)].midicps);
 
 	},
-	'/uv_radiation' //ruta el nombre del mensaje que me envian
+	'/uv_radiation' //ruta el nombre del mensaje que me envian(recibo)
 
 );
 
@@ -65,7 +65,7 @@ var particulasUV = { arg width, height, d, counter;
 
 			color = Color.new(r,g,b); // Poner color
 			radius = a + n; // Radio del circulo
-			xoffset = 0; // Mover  IZ o Dr
+			xoffset = 0; // Mover  Izquierda o Derecha
 			yoffset = 0; // Mover Arriba o Abajo
 			x = (d/2) + (ix * d) + xoffset; //Posición en x de las partiuclas
 			y = (d/2) + (iy * d) + yoffset; //Posición en y de las partiuclas
@@ -79,13 +79,14 @@ var particulasUV = { arg width, height, d, counter;
 	};
 };
 
-var window = Window("Radiacion_UV_Medallo", 1280@960).front;
+var window = Window("Radiacion_UV_Medallo", 1280@960).front; //tamaño y nombre de la ventana
 var userView = UserView(window, 1280@960).background_(Color.gray(1,1)).animate_(true).frameRate_(30).drawFunc_({
 	var counter = tan(userView.frame / 30).abs; // Contardor que no se uso
 	particulasUV.value(1280,960,d,counter);  counter
 });
 )
 
+//Sintetizadores 
 (
 SynthDef(\string , {|gate=1,acordes,am=1|
 	var onda,envo;
