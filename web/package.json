@@ -2,6 +2,7 @@
   "name": "amva-app-web",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://danielsolartech.github.io/amva-app",
   "scripts": {
     "build": "react-scripts build",
     "deploy": "gh-pages -d build",
