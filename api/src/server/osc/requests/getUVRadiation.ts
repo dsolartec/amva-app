@@ -8,18 +8,22 @@ import ICache from "@Interfaces/ICache";
 function send_uv_radiation(osc: IUDPPort, data: IUVRadiationStation[], frequency: number) {
     console.log(`OSC: Got ${data.length} ultraviolet radiation stations.`);
 
-    data.forEach((e, i) => {
+    for (let i = 0; i <= ~~(data.length / 50); i++) {
         setTimeout(() => {
+            const init = i * 50;
+
             const args: IOSCMessageData[] = [];
 
-            args.push({ type: "f", value: e.ultraviolet_radiation });
-            args.push({ type: "f", value: e.latitude });
-            args.push({ type: "f", value: e.length });
+            data.slice(init, init + 50).forEach((e) => {
+                args.push({ type: "f", value: e.ultraviolet_radiation });
+                args.push({ type: "f", value: e.latitude });
+                args.push({ type: "f", value: e.length });
+            });
 
             osc.send({ address: "/uv_radiation", args });
-            console.log("OSC: Sent 1 ultraviolet radiation station.");
+            console.log("OSC: Sent 50 ultraviolet radiation stations.");
         }, i * frequency);
-    });
+    }
 }
 
 export function getYesterday(message: IOSCMessage, osc: IUDPPort, cache: ICache): void {

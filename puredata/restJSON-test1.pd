@@ -1,0 +1,16 @@
+#N canvas 486 139 698 764 12;
+#X obj 159 174 rest;
+#X obj 137 235 print data;
+#X obj 219 235 print status;
+#X msg 241 127 sslcheck 0;
+#X msg 333 127 sslcheck 1;
+#X text 233 168 By default correct SSL host is checked. Disable check
+by sending sslcheck with a value to 0 \, reenable checking by setting
+the value to 1;
+#X obj 45 51 rest http://localhost:5984/;
+#X msg 97 85 GET http://localhost:57120/;
+#X connect 0 0 1 0;
+#X connect 0 1 2 0;
+#X connect 3 0 0 0;
+#X connect 4 0 0 0;
+#X connect 7 0 0 0;

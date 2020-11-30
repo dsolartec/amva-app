@@ -1,0 +1,2 @@
+play({SinOsc.ar(LFNoise0.kr(12, mul: 600, add: 1000), 0.3)});
+{SinOsc.ar()}.play;
