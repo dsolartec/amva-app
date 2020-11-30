@@ -1,0 +1,16 @@
+#N canvas 1188 59 358 282 12;
+#X obj 201 -366 import mrpeach;
+#X obj 25 -477 unpackOSC;
+#X obj 42 -443 print unpacked;
+#X text 26 -341 [routeOSC] routes Open Sound Control* messages \, or
+lists of anything beginning with a /path, f 39;
+#X obj 71 -507 udpreceive 57110;
+#X obj 27 -403 routeOSC /hello/from/oscjs;
+#X obj 27 -364 print latlon;
+#X obj 246 -400 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X connect 1 0 2 0;
+#X connect 1 0 5 0;
+#X connect 4 0 1 0;
+#X connect 5 0 6 0;
+#X connect 7 0 0 0;

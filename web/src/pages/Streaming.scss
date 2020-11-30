@@ -1,0 +1,39 @@
+@import '../assets/colors.scss';
+
+.streaming {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+
+    & > button {
+        position: absolute;
+        top: .5rem;
+        left: .5rem;
+        z-index: 1;
+        border: 0;
+        border-radius: 4px;
+        background-color: $blue;
+        color: white;
+        padding: .5rem 1rem;
+        cursor: pointer;
+        outline: none;
+        transition:
+            .4s background-color ease-in-out,
+            .2 transform ease-in-out;
+
+        &:hover {
+            background-color: $lightBlue;
+        }
+        &:active {
+            transform: scale3d(.9, .9, .9);
+        }
+    }
+    & > video {
+        height: 100%;
+        @media (max-width: 575.98px) {
+	        margin-left: -100%;
+        }
+    }
+}

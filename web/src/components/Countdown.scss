@@ -1,0 +1,25 @@
+@import '../assets/colors.scss';
+
+.countdown {
+    font: {
+        family: SegoeUI;
+        size: 1.15rem;
+    }
+    background-color: rgba($gray, .6);
+    padding: .5em 1em;
+    border-radius: 4px 0 0 0;
+    text: {
+        align: center;
+        shadow: 1px 2px 0 rgba(black, .5);
+    }
+    color: white;
+    pointer-events: none;
+    width: 100%;
+
+    @media (max-width: 575.98px) {
+        font-size: .8rem;
+        width: 100%;
+        border-radius: 0;
+        padding: .35em .5em;
+    }
+}

@@ -1,0 +1,46 @@
+@font-face {
+    font-family: Roboto;
+    font-weight: 200;
+    src: url("./assets/fonts/Roboto-Light.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: normal;
+    src: url("./assets/fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: 500;
+    src: url("./assets/fonts/Roboto-Medium.ttf");
+}
+
+@font-face {
+    font-family: Roboto;
+    font-weight: bold;
+    src: url("./assets/fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+    font-family: SegoeUI;
+    src: url("./assets/fonts/segoe-ui.otf");
+}
+
+@font-face {
+    font-family: VagRounded;
+    src: url("./assets/fonts/vag-rounded.otf");
+}
+
+* {
+    font-family: Roboto;
+    font-weight: normal;
+    box-sizing: border-box;
+}
+
+body {
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}

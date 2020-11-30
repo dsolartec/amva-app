@@ -1,0 +1,51 @@
+@import "../assets/colors.scss";
+
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 575.98px) {
+        padding: 1rem;
+    }
+
+    & > .logo {
+        margin-bottom: 1rem;
+
+        @media (max-width: 575.98px) {
+            margin-bottom: .5rem;
+        }
+    }
+    & > h2 {
+        margin: 0;
+        font: {
+            size: 2em;
+            weight: 500;
+        }
+        color: $blue;
+        letter-spacing: .02em;
+        text-align: center;
+
+        @media (max-width: 575.98px) {
+            font-size: 1.2em;
+        }
+    }
+    & > span {
+        margin-top: .5rem;
+        color: $gray;
+
+        @media (max-width: 575.98px) {
+            font-size: .8em;
+            letter-spacing: .02em;
+            margin-top: .25rem;
+        }
+    }
+}
