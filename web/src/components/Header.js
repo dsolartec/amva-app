@@ -3,6 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import Logo from './Logo';
 import * as states from '../states';
 import './Header.scss';
+import FishEyeGrid from './FishEyeGrid';
 
 export default function Header({
     setViewState,
@@ -24,6 +25,7 @@ export default function Header({
         <animated.div className="header" style={boxAnimation}>
             <div className="top">
                 <Logo type="plain" scale={1.5} />
+                <FishEyeGrid />
             </div>
             <div className="actions">
                 <button
