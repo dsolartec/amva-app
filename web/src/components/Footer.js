@@ -3,7 +3,7 @@ import Countdown from './Countdown';
 import './Footer.scss';
 
 const texts = {
-    amva: 'Con una línea que nos trazamos, acercamos territorios, culturas, diversidades, puntos <br/> de vista, sueños y personas. Cada punto es un foco de gestión que se une a través <br/> de la tecnología, la movilidad, el desarrollo y la conservación ambiental para articular un Futuro Sostenible que no se detiene y crea calidad de vida.',
+    amva: 'Con una línea que nos trazamos, acercamos territorios, culturas, diversidades, puntos <br/> de vista, sueños y personas. Cada punto es un foco de gestión que se une a través <br/> de la tecnología, la movilidad, el desarrollo y la conservación ambiental para articular un Futuro sostenible que no se detiene y crea calidad de vida.',
     capsule: 'Las urnas del tiempo clásicas querían mostrar a generaciones futuras cómo era la vida años atrás; la "Cápsula Viva Observatorio de lo Invisible" viene del pasado y el futuro para decirnos que la llave del acertijo la tenemos hoy en nuestras manos.',
     video: `“Tendemos a ignorar las cosas que son invisibles, ¿estás de acuerdo? 
     ¿Invisibles? 
