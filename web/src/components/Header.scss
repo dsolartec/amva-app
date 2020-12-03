@@ -27,10 +27,10 @@
             border: 0;
             border-radius: 4px;
             padding: .25rem 1rem;
-            margin: 2px;
+            margin: 0 2px 2px 0;
             cursor: pointer;
             width: 48%;
-            background-color: $lightGreen;
+            background-color: $blue;
             color: white;
             font: {
                 size: .85em;
@@ -44,7 +44,7 @@
             outline: none;
 
             &:hover {
-                background-color: $green;
+                background-color: $lightGreen;
             }
             &:active {
                 transform: scale3d(.9, .9, .9);
