@@ -23,7 +23,7 @@ export default function Header({
     return (
         <animated.div className="header" style={boxAnimation}>
             <div className="top">
-                <Logo type="color" scale={2} />
+                <Logo scale={2} />
             </div>
             <div className="actions">
                 <button
