@@ -2,17 +2,18 @@
 
 .countdown {
     font: {
-        family: SegoeUI;
-        size: 1.15rem;
+        family: MajorMonoDisplay;
+        size: 0.7rem;
+        weight: bold;
     }
     background-color: rgba($gray, .6);
     padding: .5em 1em;
     border-radius: 4px 0 0 0;
-    text: {
-        align: center;
-        shadow: 1px 2px 0 rgba(black, .5);
-    }
-    color: white;
+    // text: {
+    //     align: center;
+    //     shadow: 1px 2px 0 rgba(black, .5);
+    // }
+    color: black;
     pointer-events: none;
     width: 100%;
 

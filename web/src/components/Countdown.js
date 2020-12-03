@@ -43,12 +43,12 @@ export default function Countdown() {
 
     return (
         <animated.div className="countdown" style={boxAnimation}>
-            En el 2030 acabaremos con nuestros recursos hídricos si no los gestionamos de manera adecuada:
-            {' ' + time.years} AÑO{time.years === 1 ? '' : 'S'},
-            {' ' + time.days} DÍA{time.days === 1 ? '' : 'S'},
-            {' ' + time.hours} HORA{time.hours === 1 ? '' : 'S'},
-            {' ' + time.minutes} MINUTO{time.minutes === 1 ? '' : 'S'} Y
-            {' ' + time.seconds} SEGUNDO{time.seconds === 1 ? '' : 'S'}
+            en el 2030 acabaremos con nuestros recursos hídricos si no los gestionamos de manera adecuada:
+            {' ' + time.years} año{time.years === 1 ? '' : 's'},
+            {' ' + time.days} día{time.days === 1 ? '' : 's'},
+            {' ' + time.hours} hora{time.hours === 1 ? '' : 's'},
+            {' ' + time.minutes} minuto{time.minutes === 1 ? '' : 's'} y
+            {' ' + time.seconds} segundo{time.seconds === 1 ? '' : 's'}
         </animated.div>
     );
 }
