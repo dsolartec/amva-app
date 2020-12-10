@@ -1,3 +1,5 @@
+![capsula1](https://media1.giphy.com/media/c97mppHU1IpYxYv1RC/giphy.gif)
+
 En el mundo existen billones de sensores interconectados que capturan datos y registros para perfilar cada evento e intentar predecir futuros comportamientos de los inconmensurables sistemas que co-habitamos. ¿Cuáles son las consecuencias que trae comprender el mundo solo desde lo numérico, cuantificable, digital? ¿Qué implicaciones tiene este tipo de cognición en nuestra percepción del mundo?
 
 Planteamos un ‘Observatorio’ para estudiar el cruce de lo tecnológico, biológico y filosófico en el Valle de Aburrá (zona geográfica donde se ubica la ciudad de Medellín, Colombia) desde la aproximación sensible que nos permiten las artes. Proponemos una cápsula que, como lugar común, abra espacio al cruce de saberes y haceres representados y potenciados desde la diversidad e interrelación entre especies.
