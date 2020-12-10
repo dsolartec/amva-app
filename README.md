@@ -1,3 +1,5 @@
+
+![capsula1](https://raw.githubusercontent.com/danielsolartech/amva-app/main/data_generated/purr-data/ACIDATA_-_2020_11_30_histograms.gif)
 ![capsula1](https://media1.giphy.com/media/c97mppHU1IpYxYv1RC/giphy.gif)
 
 En el mundo existen billones de sensores interconectados que capturan datos y registros para perfilar cada evento e intentar predecir futuros comportamientos de los inconmensurables sistemas que co-habitamos. ¿Cuáles son las consecuencias que trae comprender el mundo solo desde lo numérico, cuantificable, digital? ¿Qué implicaciones tiene este tipo de cognición en nuestra percepción del mundo?
